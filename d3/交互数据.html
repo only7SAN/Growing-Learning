@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>交互数据操作</title>
+</head>
+<body>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript">
+		var width = 400;
+		var height = 400;
+		console.log(d3)
+
+		var svg = d3.select("body").append("svg").attr("width",width).attr("height",height);
+		var padding = {left:30,right:30,top:20,bottom:20};
+
+		var dataset = [10, 20, 30, 40, 33, 24, 12, 5];
+
+		var XScale = d3.scaleBand().domain(d3.range(dataset.length)).rangeRound([0,width-padding.left-padding.right]);
+		var YScale = d3.scaleLinear().domain([0,d3.max(dataset)]).range([0,height-padding.top-padding.bottom]);
+
+		var XAxis = d3.axisBottom().scale(XScale);
+		var YAxis = d3.axisLeft().scale(YScale);
+
+		svg.selectAll("rect")
+			.data(dataset)
+			.enter()
+			.append("rect")
+			.attr("x",function(d,i){
+           	 	return XScale(i) + 2 + padding.left;
+        	})
+			.attr("y",function(d,i){
+				console.log(-YScale(d))
+				return height-padding.top-padding.bottom-YScale(d);
+			})
+			.attr("width", XScale.bandwidth() - 4 )
+	        .attr("height", function(d){
+	            return YScale(d);
+	        })
+	        .attr("fill","steelblue")
+	        .on("mouseover",function(d,i){
+	        	d3.select(this)
+					.attr("fill","skyblue")
+	        })
+	        .on("mouseout",function(d,i){
+	        	d3.select(this)
+	        		.transition()
+	        		.duration(500)
+	        		.attr("fill","steelblue")
+	        });
+
+		//添加x轴
+		svg.append("g")
+		  .attr("class","axis")
+		  .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")
+		  .call(XAxis);
+
+		//添加y轴
+		svg.append("g")
+		  .attr("class","axis")
+		  .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+		  .call(YAxis);
+	</script>
+</body>
+</html>
