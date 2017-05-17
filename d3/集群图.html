@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>集群图</title>
+</head>
+<body>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript">
+		console.log(d3);
+		//创建svg
+		var svg = d3.select("body").append("svg").attr("width",400).attr("height",400);
+		//集群数据
+		var cityData = JSON.parse(JSON.stringify({
+						"name":"中国",
+						"children":
+						[
+						    {
+						      "name":"浙江" ,
+						      "children":
+						      [
+						            {"name":"杭州" },
+						            {"name":"宁波" },
+						            {"name":"温州" },
+						            {"name":"绍兴" }
+						      ]
+						    },
+
+						    {
+						        "name":"广西" ,
+						        "children":
+						        [
+						            {"name":"桂林"},
+						            {"name":"南宁"},
+						            {"name":"柳州"},
+						            {"name":"防城港"}
+						        ]
+						    },
+
+						    {
+						        "name":"黑龙江",
+						        "children":
+						        [
+						            {"name":"哈尔滨"},
+						            {"name":"齐齐哈尔"},
+						            {"name":"牡丹江"},
+						            {"name":"大庆"}
+						        ]
+						    },
+
+						    {
+						        "name":"新疆" ,
+						        "children":
+						        [
+						            {"name":"乌鲁木齐"},
+						            {"name":"克拉玛依"},
+						            {"name":"吐鲁番"},
+						            {"name":"哈密"}
+						        ]
+						    }
+						]
+						}));
+		console.log(cityData)
+
+		var cluster = d3.cluster().size([400,400]);
+
+		var nodes = cluster(d3.hierarchy(cityData));
+		var links = cluster(nodes).links();
+		console.log(nodes)
+		console.log(links)
+
+		var diagonal = d3.svg.diagonal()
+    					.projection(function(d) { return [d.y, d.x]; });
+
+    	//var node
+
+		svg.selectAll(".link")
+		      .data(links)
+		      .enter()
+		      .append("path")
+		      .attr("class", "link")
+		      .attr("d", diagonal);   //使用对角线生成器
+	</script>
+</body>
+</html>

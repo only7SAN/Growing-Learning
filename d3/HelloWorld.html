@@ -23,18 +23,15 @@
 	<script type="text/javascript">
 		var p = d3.select("body").selectAll("p");
 		var data = ["what is it ?","It is your name.","papapap"]
-		console.log(p)
 		p.data(data);
 		p.text(function(d,i){
 			return "这是第" + i +"个p：" + d;
 		})
 		p.style("font-size","36px").style("color","red");
-		console.log(p)
 
 		//svg
 		var svg = d3.select("body").append("svg").attr("width","300px").attr("height","300px");
 		var dataset = [ 2.5 , 2.1 , 1.7 , 1.3 , 0.9 ];
-		console.log(d3)
 		var linear = d3.scaleLinear().domain([0,d3.max(dataset)]).range([0,250]);
 		var axis = d3.axisBottom()
 			.scale(linear)      //指定比例尺   //指定刻度的方向

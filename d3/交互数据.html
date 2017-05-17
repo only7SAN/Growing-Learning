@@ -9,7 +9,6 @@
 	<script type="text/javascript">
 		var width = 400;
 		var height = 400;
-		console.log(d3)
 
 		var svg = d3.select("body").append("svg").attr("width",width).attr("height",height);
 		var padding = {left:30,right:30,top:20,bottom:20};
@@ -30,7 +29,6 @@
            	 	return XScale(i) + 2 + padding.left;
         	})
 			.attr("y",function(d,i){
-				console.log(-YScale(d))
 				return height-padding.top-padding.bottom-YScale(d);
 			})
 			.attr("width", XScale.bandwidth() - 4 )

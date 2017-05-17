@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>饼状图</title>
+</head>
+<body>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript">
+	var svg = d3.select("body").append("svg").attr("width",400).attr("height",400);
+	var dataset = [ 30 , 10 , 45 , 55 , 13 ];
+	var pie = d3.pie();
+	var pieData = pie(dataset);
+	var outerRadius = 150;
+	var innerRadius = 20;
+	var arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+
+	var arcs = svg.selectAll("g").data(pieData).enter().append("g")
+					.attr("transform","translate(" + 200 + "," + 200 + ")");
+
+	var color = d3.scaleOrdinal().domain(d3.range(20)).range(d3.schemeCategory20);
+
+	arcs.append("path").attr("fill",function(d,i){
+		return color(i);
+	})
+	.attr("d",function(d){
+		return arc(d);
+	})
+
+	arcs.append("text").attr("transform",function(d){
+		return "translate(" + arc.centroid(d) + ")";
+	})
+	.attr("text-anchor","middle")
+	.text(function(d){
+		return d.data;
+	})
+
+	</script>
+</body>
+</html>
