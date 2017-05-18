@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		console.log(d3);
 		//创建svg
-		var svg = d3.select("body").append("svg").attr("width",400).attr("height",400);
+		var svg = d3.select("body").append("svg").attr("width",600).attr("height",600);
 		//集群数据
 		var cityData = JSON.parse(JSON.stringify({
 						"name":"中国",
@@ -60,26 +60,46 @@
 						    }
 						]
 						}));
-		console.log(cityData)
 
-		var cluster = d3.cluster().size([400,400]);
+		var cluster = d3.cluster().size([500,500]);
 
 		var nodes = cluster(d3.hierarchy(cityData));
-		var links = cluster(nodes).links();
-		console.log(nodes)
-		console.log(links)
+		var links = cluster(d3.hierarchy(cityData)).links();
 
-		var diagonal = d3.svg.diagonal()
-    					.projection(function(d) { return [d.y, d.x]; });
+		svg.selectAll(".link").data(links).enter().append("path").attr("class","link")
+			.attr("stroke","gray")
+			.attr("stroke-width","2")
+			.attr("d",function(d){
+				var path = d3.path();
+				path.moveTo(d.source.y,d.source.x);
+				path.lineTo(d.target.y,d.target.x);
+				return path._;
+			})
+			.attr("transform","translate(" + 20 + "," + 0 + ")")
 
-    	//var node
+        svg.selectAll("circle").data(nodes.descendants()).enter().append("circle")
+	        .attr("r",10)
+			.attr("cx",function(d){
+				return d.y;
+			})
+			.attr("cy",function(d){
+				return d.x;
+			})
+			.attr("transform","translate(" + 20 + "," + 0 + ")")
+			.attr("fill","steelblue")
 
-		svg.selectAll(".link")
-		      .data(links)
-		      .enter()
-		      .append("path")
-		      .attr("class", "link")
-		      .attr("d", diagonal);   //使用对角线生成器
+		svg.selectAll("text").data(nodes.descendants()).enter().append("text")
+			.attr("x",function(d){
+				return d.y;
+			})
+			.attr("y",function(d){
+				return d.x;
+			})
+			.attr("transform","translate(" + 30 + "," + 0 + ")")
+			.text(function(d){
+				return d.data.name;
+			})
+
 	</script>
 </body>
 </html>
