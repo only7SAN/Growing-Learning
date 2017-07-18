@@ -1,0 +1,80 @@
+	*{
+		padding: 0;
+		margin: 0;
+	}
+
+	li{
+		list-style: none;
+	}
+
+	a{
+		text-decoration-line: none;
+		color:#747D84;
+	}
+
+	html{
+		width:;
+		color:#747D84;
+	}
+
+	div {
+	    font-size: 12px; // 默认写上dpr为1的fontSize
+	}
+
+	[data-dpr="2"] div {
+	    font-size: 24px;
+	}
+
+	[data-dpr="3"] div {
+	    font-size: 36px;
+	}
+	
+	nav{
+		width:10.0rem;
+		height: 0.666667rem;
+		margin:0.266667rem 0;
+		text-align: center;
+		line-height: 0.666667rem;
+	}
+
+	nav ul li{
+		float: left;
+		width:2.0rem;
+		font-size:0.32rem;
+	}
+
+	aside{
+		overflow: hidden;
+		margin:0.133333rem 0;
+	}
+
+	aside ul li{
+		float:left;
+		margin:0.133333rem 0.266667rem;
+		border:0.066667rem solid #5FC5E9;
+		width:4.333333rem;
+		height:2.0rem;
+	}
+	
+	article h1{
+		height: 0.666667rem;
+		line-height: 0.666667rem;
+		font-size: 0.32rem;
+		text-align: center;
+	}
+
+	article div{
+		width:9.333333rem;
+		margin: 0.2rem auto;
+	}
+
+	footer{
+		height: 0.666667rem;
+		font-size: 0.32rem;
+	}
+
+	footer li{
+		display: inline-block;
+		font-size:0.266667rem;
+		padding:0.133333rem 0 0.133333rem 2.0rem;
+	}

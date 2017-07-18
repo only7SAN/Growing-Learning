@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=0.5, user-scalable=no">
+	<title>响应式设计</title>
+</head>
+<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+
+	li{
+		list-style: none;
+	}
+
+	a{
+		text-decoration-line: none;
+		color:#747D84;
+	}
+
+	html{
+		width:750px;
+		color:#747D84;
+	}
+	
+	nav{
+		width:750px;
+		height: 50px;
+		margin:20px 0;
+		text-align: center;
+		line-height: 50px;
+	}
+
+	nav ul li{
+		float: left;
+		width:150px;
+		font-size:24px;
+	}
+
+	aside{
+		overflow: hidden;
+		margin:10px 0;
+	}
+
+	aside ul li{
+		float:left;
+		margin:10px 20px;
+		border:5px solid #5FC5E9;
+		width:325px;
+		height:150px;
+	}
+	
+	article h1{
+		height: 50px;
+		line-height: 50px;
+		font-size: 24px;
+		text-align: center;
+	}
+
+	article div{
+		width:700px;
+		margin: 15px auto;
+	}
+
+	footer{
+		height: 50px;
+		font-size: 24px;
+	}
+
+	footer li{
+		display: inline-block;
+		font-size:20px;
+		padding:10px 0 10px 150px;
+	}
+
+</style>
+<body>
+	<div id="main">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Articles</a>
+                    </li>
+                    <li>
+                        <a href="#">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#">Forum</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                </ul>
+            </nav>
+            <aside>
+                <ul>
+                    <li><a href="#subtitle1">item1</a> </li>
+                    <li><a href="#subtitle2">item2</a></li>
+                    <li><a href="#subtitle3">item3</a></li>
+                    <li><a href="#subtitle4">item4</a></li>
+                    <li><a href="#subtitle5">item5</a></li>
+                    <li><a href="#subtitle5">...</a></li>
+                </ul>
+            </aside>
+            <section class="post">
+                <article>
+                    <h1>
+                        Sample Title
+                    </h1>
+                    
+                    <p></p>
+                    
+                    <section class="grid">
+                        <div class="item">
+                            布局视口明显对用户是不友好的，完全忽略了手机本身的尺寸。所以苹果引入了理想视口的概念，它是对设备来说最理想的布局视口尺寸。理想视口中的网页用户最理想的宽度，用户进入页面的时候不需要缩放。现在讨论所谓的『最理想的宽度』到底是多少？其实，如果我们把布局视口的宽度改成屏幕的宽度不就不用缩放了么。可以这样设置告诉浏览器使用它的理想视口
+                        </div>
+                        <div class="item">
+                            由上述规则可以得到一些有用的结论将 meta 标签中的 width 设为 device-width 同时禁用手动缩放可以使 布局视口尺寸 = 可视视口尺寸 = 理想视口尺寸，此时 设备像素比 = 物理像素数 / 理想视口尺寸 = 物理像素数 / 布局视口尺寸，对iphone5，一个CSS像素对应4个物理像素为 initial-scale 设置任意合法的值同时禁用手动缩放就可以使布局视口尺寸 = 可视视口尺寸将 initial-scale 设置为 1 也可以使 布局视口尺寸 = 可视视口尺寸 = 理想视口尺寸
+                        </div>
+                        <div class="item">
+                            理论上这个系数可以是任意值，假设将这个系数取 1，则 html 元素的 font-size 即1 rem等于可视视口的宽度，此时以 rem 为单位的长度 n rem 就可以理解为 n 倍可视视口的长，这个系数取 0.01 时，1 rem 等于可视视口宽的 1/100，也就等于布局视口宽的 1/100，也就等于 1vw。实际使用过程中这个系数的选择尽可能方便将设计稿长度数值换算为css中的长度数值
+                        </div>
+                    </section>
+                    <p></p>
+                </article>
+            </section>
+            <footer>
+                <hr>
+                <ul>
+                    <li><small>Wayou &copy 2013|</small></li>
+                    <li><small><a href="mailto:sample@somesite.com">Contact</a></small> </li>
+                </ul>
+            </footer>
+        </div>
+</body>
+</html>
