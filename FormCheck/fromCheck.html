@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+	<script type="text/javascript" src="./check.js"></script>
+	<div class="form_group tel">
+	  <label for="name">手机</label>
+	  <input type="tel" name="tel" id="tel1" class="tel">
+	  <p class="message1"></p>
+	  <label for="name">手机2</label>
+	  <input type="tel" name="tel" id="tel2" class="tel">
+	  <p class="message2"></p>
+	  <label for="name">手机3</label>
+	  <input type="tel" name="tel" id="tel3" class="tel">
+	  <p class="message3"></p>
+	  <label for="name">手机4</label>
+	  <input type="tel" name="tel" id="tel4" class="tel">
+	  <p class="message4"></p>
+	  <button id="btn"></button>
+	  <button id="reset"></button>
+	</div>
+	<script>
+		const obj = [{
+				  target: '#tel1', // 验证目标
+				  message: { target: '.tel .message1', success: '手机格式正确' }, // 验证信息显示的地方
+				  validators: [ // 验证规则数组
+				    { name: 'tel', args: { message: '手机格式错误' } }
+				  ]
+				},
+				{
+				  target: '#tel2', // 验证目标
+				  message: { target: '.tel .message2', success: '手机格式正确' }, // 验证信息显示的地方
+				  validators: [ // 验证规则数组
+				    { name: 'tel', args: { message: '手机格式错误' } }
+				  ]
+				},
+				{
+				  target: '#tel3', // 验证目标
+				  message: { target: '.tel .message3', success: '手机格式正确' }, // 验证信息显示的地方
+				  validators: [ // 验证规则数组
+				    { name: 'tel', args: { message: '手机格式错误' } }
+				  ]
+				},
+				{
+				  target: '#tel4', // 验证目标
+				  message: { target: '.tel .message4', success: '手机格式正确' }, // 验证信息显示的地方
+				  validators: [ // 验证规则数组
+				    { name: 'tel', args: { message: '手机格式错误' } }
+				  ]
+				}]
+
+		let check = new Validator({
+			success:(target)=>{console.log("成功")},
+			error:(target)=>{console.log("失败")},
+			reset:(allTarget)=>{ console.log(allTarget) }
+		},obj);
+
+		$('#btn').click(() => {
+				check.runAll();
+		})
+
+		$('#reset').click(() => {
+				check.reset();
+		})
+	</script>
+</body>
+</html>
