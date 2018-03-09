@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterator</title>
+</head>
+<body>
+<script>
+    let iterator = {
+        0: 'a',
+        1: 'b',
+        2: 'c',
+        length: 3,
+        [Symbol.iterator]: Array.prototype[Symbol.iterator]
+    };
+
+    for (let item of iterator){
+        console.log(item);
+    }
+</script>
+</body>
+</html>
