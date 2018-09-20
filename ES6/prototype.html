@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型间的关系</title>
+</head>
+<body>
+<div id='a'></div>
+<script src="../node_modules/babel-core/browser.min.js"></script>
+<script>
+    var a = 'aaa',b = 5;
+    function c() {}
+
+    function* aaa() {
+        console.log('Hello' + (yield 'aaa')); // OK
+        let a = yield 'hello';
+        console.log(a);
+        let b = yield 'hello';
+        console.log(b);
+    }
+
+    let gen = aaa();
+    console.log(gen);
+    gen.next();
+    gen.next();
+    gen.next();
+
+    function getStockSymbol(name){
+        return name;
+    }
+
+    async function getStockPriceByName(name) {
+        const symbol = await setTimeout(function(){
+            console.log('sadas')
+        },1000);
+        console.log(symbol);
+        return symbol;
+    }
+
+    console.log(getStockPriceByName('goog'));
+  
+
+    window.onload = function() {
+    	var count = 1;
+    	console.log(Date.now());
+    	setTimeout(function(){
+    		console.log(Date.now());
+    	}, 1000);
+    	for(var i = 1; i < 100000; i++) {
+    		count++;
+    	}
+    	console.log(Date.now());
+    };
+</script>
+</body>
+</html>
