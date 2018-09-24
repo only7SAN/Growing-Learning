@@ -9,35 +9,29 @@
 <script src="../node_modules/babel-core/browser.min.js"></script>
 <script>
     var a = 'aaa',b = 5;
-    function c() {}
 
-    function* aaa() {
-        console.log('Hello' + (yield 'aaa')); // OK
-        let a = yield 'hello';
-        console.log(a);
-        let b = yield 'hello';
-        console.log(b);
-    }
+    console.log('开始');
+    // 比较api异步优先级顺序
+    setTimeout(function(){
+        console.log('setTimeout');
+    },0);
+    let aPromise = new Promise(function(resolve,reject){
+        console.log('promise内部');
+        resolve(console.log('promise resolve'));
+    });
+    let bPromise = new Promise(function(resolve,reject){
+        console.log('bpromise内部');
+        const image = new Image();
 
-    let gen = aaa();
-    console.log(gen);
-    gen.next();
-    gen.next();
-    gen.next();
-
-    function getStockSymbol(name){
-        return name;
-    }
-
-    async function getStockPriceByName(name) {
-        const symbol = await setTimeout(function(){
-            console.log('sadas')
-        },1000);
-        console.log(symbol);
-        return symbol;
-    }
-
-    console.log(getStockPriceByName('goog'));
+        image.onload = function() {
+            console.log('bpromise resolve');
+            resolve(image);
+        };
+    });
+    aPromise.then(function(){
+        console.log('promise then');
+    });
+    console.log('结束');
   
 
     window.onload = function() {
