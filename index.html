@@ -410,21 +410,42 @@
                 price: 28.50,
                 image: "./img/6.jpg",
                 description: "LED light lamp kit compatible with Bambu Lab A1/A1mini/P1S/P1P/X1C. Easy installation with warm white light and RGB color options."
+            },
+            {
+                id: 7,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs",
+                price: 12.99,
+                image: "./img/7-1.jpg",
+                images: ["./img/7-1.jpg", "./img/7-2.jpg", "./img/7-3.jpg", "./img/7-4.jpg", "./img/7-5.jpg"],
+                variants: [
+                    { pack: "2 Pack", price: 12.99 },
+                    { pack: "4 Pack", price: 16.99 }
+                ],
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light. Adjustable brightness (5% to full) via smooth dimming technology. Portable mini design using only 1W, made of ABS flame retardant materials. Warm white 3000K light, soft and non-glare, protects eyes. Perfect for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. Note: Light-activated, NOT motion-activated. Use at least 1 meter apart to avoid interference."
             }
         ];
 
         // Load products
         function loadProducts() {
             const grid = document.getElementById('productsGrid');
-            grid.innerHTML = products.map(product => `
+            grid.innerHTML = products.map(product => {
+                let priceDisplay = '';
+                if (product.variants && product.variants.length > 0) {
+                    // 显示多个价格选项
+                    priceDisplay = product.variants.map(v => `£${v.price.toFixed(2)} (${v.pack})`).join(' / ');
+                } else {
+                    priceDisplay = `£${product.price.toFixed(2)}`;
+                }
+                return `
                 <a href="product-detail.html?id=${product.id}" class="product-card">
                     <img src="${product.image}" alt="${product.title}" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">${product.title}</h3>
-                        <div class="product-price">£${product.price.toFixed(2)}</div>
+                        <div class="product-price">${priceDisplay}</div>
                     </div>
                 </a>
-            `).join('');
+            `;
+            }).join('');
         }
 
         // Hero slider
