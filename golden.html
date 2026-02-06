@@ -422,6 +422,51 @@
             border-color: #4ade80;
         }
 
+        /* 二维码弹窗样式 */
+        .qr-modal-content {
+            background: linear-gradient(135deg, #1a2332 0%, #2d3a4f 100%);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 300px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        .qr-title {
+            color: #ffd700;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .qr-image-container {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .qr-tip {
+            color: #b8c5d6;
+            font-size: 13px;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+
         /* 响应式 */
         @media (max-width: 480px) {
             .price-table {
@@ -436,23 +481,11 @@
     </style>
 </head>
 <body>
-    <!-- 状态栏 -->
-    <div class="status-bar">
-        <div class="status-left">
-            <span id="currentTime">18:47</span>
-        </div>
-        <div class="status-right">
-            <span>📶</span>
-            <span>📶</span>
-            <span>🔋 85%</span>
-        </div>
-    </div>
-
     <!-- 头部 -->
     <div class="header">
         <div class="company-name">天运珠宝</div>
         <div class="header-icons">
-            <div class="header-icon">💬</div>
+            <div class="header-icon" onclick="showQRModal()">💬</div>
             <div class="header-icon" onclick="showPhoneModal()">📞</div>
         </div>
     </div>
@@ -479,12 +512,6 @@
         <div class="loading">正在加载数据...</div>
     </div>
 
-    <!-- 底部导航 -->
-    <div class="bottom-nav">
-        <div class="bottom-nav-item active">行情</div>
-        <div class="bottom-nav-item">资讯</div>
-    </div>
-
     <!-- 手机号弹窗 -->
     <div class="modal-overlay" id="phoneModal" onclick="closePhoneModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -495,6 +522,18 @@
                 <button class="modal-btn modal-btn-call" onclick="callPhone()">拨打</button>
                 <button class="modal-btn modal-btn-copy" id="copyBtn" onclick="copyPhone()">复制</button>
             </div>
+        </div>
+    </div>
+
+    <!-- 二维码弹窗 -->
+    <div class="modal-overlay" id="qrModal" onclick="closeQRModal(event)">
+        <div class="qr-modal-content" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeQRModal()">×</div>
+            <div class="qr-title">微信二维码</div>
+            <div class="qr-image-container">
+                <img src="img/code.jpg" alt="微信二维码" class="qr-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23fff\' width=\'200\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'14\'%3E二维码加载失败%3C/text%3E%3C/svg%3E'">
+            </div>
+            <div class="qr-tip">扫一扫上面的二维码图案，加我为朋友</div>
         </div>
     </div>
 
@@ -515,8 +554,15 @@
                 second: '2-digit'
             }).replace(/\//g, '-');
             
-            document.getElementById('currentTime').textContent = timeStr;
-            document.getElementById('marketDateTime').textContent = dateTimeStr;
+            const currentTimeEl = document.getElementById('currentTime');
+            const marketDateTimeEl = document.getElementById('marketDateTime');
+            
+            if (currentTimeEl) {
+                currentTimeEl.textContent = timeStr;
+            }
+            if (marketDateTimeEl) {
+                marketDateTimeEl.textContent = dateTimeStr;
+            }
         }
 
         // 初始化时间
@@ -803,12 +849,34 @@
             document.body.removeChild(textArea);
         }
 
+        // 显示二维码弹窗
+        function showQRModal() {
+            document.getElementById('qrModal').classList.add('show');
+        }
+
+        // 关闭二维码弹窗
+        function closeQRModal(event) {
+            const modal = document.getElementById('qrModal');
+            if (!event) {
+                modal.classList.remove('show');
+                return;
+            }
+            // 点击遮罩层或关闭按钮时关闭
+            if (event.target.classList.contains('modal-overlay') || event.target.classList.contains('modal-close')) {
+                modal.classList.remove('show');
+            }
+        }
+
         // 点击ESC键关闭弹窗
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                const modal = document.getElementById('phoneModal');
-                if (modal.classList.contains('show')) {
+                const phoneModal = document.getElementById('phoneModal');
+                const qrModal = document.getElementById('qrModal');
+                if (phoneModal.classList.contains('show')) {
                     closePhoneModal();
+                }
+                if (qrModal.classList.contains('show')) {
+                    closeQRModal();
                 }
             }
         });
