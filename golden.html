@@ -13,9 +13,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #1a1a1a;
+            background: linear-gradient(180deg, #0f1419 0%, #1a2332 100%);
             color: #ffffff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* 顶部状态栏 */
@@ -25,7 +26,8 @@
             align-items: center;
             padding: 8px 15px;
             font-size: 12px;
-            background: #1a1a1a;
+            background: rgba(15, 20, 25, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .status-left {
@@ -42,50 +44,63 @@
 
         /* 头部 */
         .header {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-            padding: 15px;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3a4f 50%, #1a2332 100%);
+            padding: 20px 15px;
             text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
         }
 
         .company-name {
-            color: #1a1a1a;
-            font-size: 20px;
+            color: #ffd700;
+            font-size: 22px;
             font-weight: bold;
             margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
         }
 
         .company-name-en {
-            color: #333;
-            font-size: 12px;
+            color: #b8c5d6;
+            font-size: 11px;
+            opacity: 0.8;
         }
 
         .header-icons {
             position: absolute;
             right: 15px;
-            top: 50px;
+            top: 40px;
             display: flex;
             gap: 15px;
         }
 
         .header-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.3);
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .header-icon:hover {
+            background: rgba(255, 215, 0, 0.25);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
         /* 市场状态栏 */
         .market-status {
-            background: #2a2a2a;
-            padding: 10px 15px;
+            background: rgba(26, 35, 50, 0.6);
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .market-time {
@@ -93,35 +108,48 @@
             align-items: center;
             gap: 8px;
             font-size: 13px;
-            color: #ccc;
+            color: #b8c5d6;
         }
 
         .market-status-text {
-            color: #4caf50;
+            color: #4ade80;
             font-size: 13px;
             font-weight: 500;
+            padding: 4px 12px;
+            background: rgba(74, 222, 128, 0.15);
+            border-radius: 12px;
+            border: 1px solid rgba(74, 222, 128, 0.3);
         }
 
         /* 导航标签 */
         .nav-tabs {
             display: flex;
-            background: #2a2a2a;
-            border-bottom: 1px solid #333;
+            background: rgba(26, 35, 50, 0.8);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .nav-tab {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             text-align: center;
-            color: #999;
+            color: #8b9bb4;
             font-size: 14px;
-            border-bottom: 2px solid transparent;
+            border-bottom: 3px solid transparent;
             transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-tab:hover {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
         }
 
         .nav-tab.active {
-            color: #d4af37;
-            border-bottom-color: #d4af37;
+            color: #ffd700;
+            border-bottom-color: #ffd700;
+            background: rgba(255, 215, 0, 0.08);
+            font-weight: 600;
         }
 
         /* 内容区域 */
@@ -131,36 +159,39 @@
 
         /* 表格标题 */
         .section-title {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-            color: #1a1a1a;
-            padding: 12px 15px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+            color: #ffd700;
+            padding: 14px 15px;
             font-size: 16px;
             font-weight: bold;
-            margin-top: 15px;
+            border-left: 4px solid #ffd700;
+            backdrop-filter: blur(10px);
         }
 
         /* 表格 */
         .price-table {
             width: 100%;
-            background: #2a2a2a;
+            background: rgba(26, 35, 50, 0.6);
             border-collapse: collapse;
+            backdrop-filter: blur(10px);
         }
 
         .price-table th {
-            background: #333;
-            color: #d4af37;
-            padding: 12px 8px;
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+            padding: 14px 8px;
             font-size: 13px;
             font-weight: 600;
             text-align: center;
-            border-bottom: 1px solid #444;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
         }
 
         .price-table td {
-            padding: 12px 8px;
+            padding: 14px 8px;
             text-align: center;
             font-size: 13px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
         }
 
         .price-table tr:last-child td {
@@ -168,32 +199,38 @@
         }
 
         .price-table tr:nth-child(even) {
-            background: #252525;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .price-table tr:hover {
+            background: rgba(255, 215, 0, 0.05);
         }
 
         .price-up {
-            color: #4caf50;
+            color: #4ade80;
+            font-weight: 600;
         }
 
         .price-down {
-            color: #f44336;
+            color: #f87171;
+            font-weight: 600;
         }
 
         .price-normal {
-            color: #fff;
+            color: #e2e8f0;
         }
 
         /* 加载状态 */
         .loading {
             text-align: center;
             padding: 40px;
-            color: #999;
+            color: #8b9bb4;
         }
 
         .error {
             text-align: center;
             padding: 40px;
-            color: #f44336;
+            color: #f87171;
         }
 
         /* 底部导航 */
@@ -202,23 +239,187 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: #2a2a2a;
-            border-top: 1px solid #333;
+            background: rgba(15, 20, 25, 0.95);
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
             display: flex;
-            padding: 10px 0;
+            padding: 12px 0;
             z-index: 100;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .bottom-nav-item {
             flex: 1;
             text-align: center;
-            color: #999;
-            font-size: 12px;
-            padding: 5px;
+            color: #8b9bb4;
+            font-size: 13px;
+            padding: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .bottom-nav-item:hover {
+            color: #ffd700;
         }
 
         .bottom-nav-item.active {
-            color: #d4af37;
+            color: #ffd700;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .bottom-nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        /* 弹窗遮罩 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 弹窗内容 */
+        .modal-content {
+            background: linear-gradient(135deg, #1a2332 0%, #2d3a4f 100%);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 320px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            color: #ffd700;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .modal-phone {
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn-call {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a2332;
+        }
+
+        .modal-btn-call:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .modal-btn-copy {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .modal-btn-copy:hover {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: #ffd700;
+        }
+
+        .modal-btn-copy.copied {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            border-color: #4ade80;
         }
 
         /* 响应式 */
@@ -250,10 +451,9 @@
     <!-- 头部 -->
     <div class="header">
         <div class="company-name">天运珠宝</div>
-        <div class="company-name-en">Tianyun Jewelry Co., Ltd</div>
         <div class="header-icons">
             <div class="header-icon">💬</div>
-            <div class="header-icon">📞</div>
+            <div class="header-icon" onclick="showPhoneModal()">📞</div>
         </div>
     </div>
 
@@ -283,6 +483,19 @@
     <div class="bottom-nav">
         <div class="bottom-nav-item active">行情</div>
         <div class="bottom-nav-item">资讯</div>
+    </div>
+
+    <!-- 手机号弹窗 -->
+    <div class="modal-overlay" id="phoneModal" onclick="closePhoneModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closePhoneModal()">×</div>
+            <div class="modal-title">联系电话</div>
+            <div class="modal-phone" id="phoneNumber">17805987337</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-call" onclick="callPhone()">拨打</button>
+                <button class="modal-btn modal-btn-copy" id="copyBtn" onclick="copyPhone()">复制</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -521,6 +734,83 @@
                 const tabType = this.getAttribute('data-tab');
                 renderContent(tabType);
             });
+        });
+
+        // 显示手机号弹窗
+        function showPhoneModal() {
+            document.getElementById('phoneModal').classList.add('show');
+        }
+
+        // 关闭手机号弹窗
+        function closePhoneModal(event) {
+            const modal = document.getElementById('phoneModal');
+            if (!event) {
+                modal.classList.remove('show');
+                return;
+            }
+            // 点击遮罩层或关闭按钮时关闭
+            if (event.target.classList.contains('modal-overlay') || event.target.classList.contains('modal-close')) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // 拨打电话
+        function callPhone() {
+            window.location.href = 'tel:17805987337';
+        }
+
+        // 复制手机号
+        function copyPhone() {
+            const phoneNumber = '17805987337';
+            const copyBtn = document.getElementById('copyBtn');
+            
+            // 使用现代API复制到剪贴板
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(phoneNumber).then(() => {
+                    copyBtn.textContent = '已复制';
+                    copyBtn.classList.add('copied');
+                    setTimeout(() => {
+                        copyBtn.textContent = '复制';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopy(phoneNumber, copyBtn);
+                });
+            } else {
+                fallbackCopy(phoneNumber, copyBtn);
+            }
+        }
+
+        // 备用复制方法
+        function fallbackCopy(text, btn) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                btn.textContent = '已复制';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '复制';
+                    btn.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                alert('复制失败，请手动复制：' + text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // 点击ESC键关闭弹窗
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('phoneModal');
+                if (modal.classList.contains('show')) {
+                    closePhoneModal();
+                }
+            }
         });
 
         // 初始化
