@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="APSNOW - Product Details">
+    <title>APSNOW - Product Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #dc2626;
+            --primary-blue: #2563eb;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #ffffff;
+            --bg-gray: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo .red {
+            color: var(--primary-red);
+        }
+
+        .logo .blue {
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .search-icon {
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Product Detail Section */
+        .product-detail {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 30px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        /* Product Images */
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 12px;
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
+        }
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary-red);
+        }
+
+        /* Product Info */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .product-price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .buy-button {
+            background: #ffd814;
+            color: var(--text-primary);
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .buy-button:hover {
+            background: #f7ca00;
+        }
+
+        .amazon-logo {
+            height: 20px;
+        }
+
+        /* Description Section */
+        .description-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .description-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .description-content {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .description-content p {
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .thumbnail-grid {
+                grid-template-columns: repeat(9, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-title {
+                font-size: 22px;
+            }
+
+            .product-price {
+                font-size: 28px;
+            }
+
+            .thumbnail-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <span class="red">APS</span><span class="blue">NOW</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="dropdown">Products</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="product-container" id="productContainer">
+            <!-- Product content will be loaded here -->
+        </div>
+
+        <div class="description-section">
+            <h2 class="description-title">Description</h2>
+            <div class="description-content" id="descriptionContent">
+                <!-- Description will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Product data (same as index.html)
+        const products = [
+            {
+                id: 1,
+                title: "4\" 16 Ft Mini Split Line Set Cover with Flexible Pipe, Upgrade PP Heat-Resistant & Paintable, Central AC and Heat Pumps-Full Set, No Other Parts Needed",
+                price: 45.99,
+                image: "./img/1.jpg",
+                description: "Mini Split Line Set Cover kit includes 4x(3.2ft) straight ducts, 1x(2ft) flexible duct, totaling 16 feet, and all necessary integrated parts. Save 50% installation time with 39.4-inch straight ducts. Paintable & customizable to match exterior walls. Weather-resistant PP material withstands -40°F to 140°F. Compatible with most 7,000 - 36,000 BTU ductless mini splits.",
+                features: [
+                    "Mini Split Line Set Cover: Includes 4x(3.2ft) straight ducts, 1x(2ft) flexible duct, totaling 16 feet",
+                    "Save 50% Installation Time: 39.4-inch straight ducts simplify installation",
+                    "Paintable & Customizable: Can be painted to match exterior walls and trimmed to length",
+                    "Enhance Aesthetics: PP Decorative Pipe Line Cover Kit to hide unsightly line sets",
+                    "Weather-Resistant: Upgraded Polypropylene (PP) withstands -40°F to 140°F",
+                    "Easy Installation: DIY-friendly with included components",
+                    "Compatibility: Compatible with most 7,000 - 36,000 BTU ductless mini splits"
+                ],
+                fullDescription: `
+                    <p><strong>Mini Split Line Set Cover</strong></p>
+                    <p>This comprehensive kit includes 4x(3.2ft) straight ducts, 1x(2ft) flexible duct, totaling 16 feet, and all necessary integrated parts. No additional components needed for installation.</p>
+                    
+                    <p><strong>Save 50% Installation Time</strong></p>
+                    <p>Our 39.4-inch straight ducts are designed to simplify installation and reduce the risk of refrigerant leaks. The pre-assembled components make DIY installation a breeze.</p>
+                    
+                    <p><strong>Paintable & Customizable</strong></p>
+                    <p>The pipe cover can be painted to match your exterior walls and trimmed to the exact length needed for your installation. This ensures a seamless, professional appearance.</p>
+                    
+                    <p><strong>Enhance Aesthetics</strong></p>
+                    <p>Transform the look of your home by hiding unsightly line sets with our PP Decorative Pipe Line Cover Kit. The clean, modern design blends seamlessly with any architectural style.</p>
+                    
+                    <p><strong>Weather-Resistant</strong></p>
+                    <p>Made of upgraded Polypropylene (PP), this cover is capable of withstanding temperatures from -40°F to 140°F without cracking or deforming. It's built to last in any climate.</p>
+                    
+                    <p><strong>Easy Installation</strong></p>
+                    <p>DIY-friendly design with all included components saves you the cost of professional assistance. Clear instructions make installation straightforward for homeowners.</p>
+                    
+                    <p><strong>Compatibility</strong></p>
+                    <p>Compatible with most 7,000 - 36,000 BTU ductless mini splits, heat pump systems, and central A/C units. Check your unit specifications to ensure compatibility.</p>
+                `
+            },
+            {
+                id: 2,
+                title: "PVC Drainage Pipe System - Complete Installation Kit with Flexible Sections and Connectors",
+                price: 32.50,
+                image: "./img/2.jpg",
+                description: "Complete PVC drainage pipe system with straight sections, flexible corrugated sections, and various connectors. Perfect for outdoor drainage and conduit applications.",
+                features: [
+                    "Complete installation kit with all necessary components",
+                    "Straight and flexible corrugated sections included",
+                    "Various connectors and fittings for versatile installation",
+                    "Perfect for outdoor drainage applications",
+                    "Durable PVC construction",
+                    "Easy to install and maintain"
+                ],
+                fullDescription: `
+                    <p><strong>Complete PVC Drainage System</strong></p>
+                    <p>This comprehensive kit includes all components needed for a complete drainage installation. Features straight sections, flexible corrugated sections, and various connectors.</p>
+                    
+                    <p><strong>Versatile Installation</strong></p>
+                    <p>The system includes various connectors and fittings that allow for flexible installation configurations. Perfect for both residential and commercial applications.</p>
+                    
+                    <p><strong>Durable Construction</strong></p>
+                    <p>Made from high-quality PVC material that resists corrosion and weathering. Designed to last for years with minimal maintenance.</p>
+                `
+            },
+            {
+                id: 3,
+                title: "WEETALL LED Hair Growth Therapy Cap with Remote Control - Professional Hair Restoration Device",
+                price: 89.99,
+                image: "./img/3.jpg",
+                description: "Advanced LED hair growth therapy cap with red LED lights. Features remote control for easy operation. Comfortable design with adjustable fit.",
+                features: [
+                    "Advanced LED hair growth technology",
+                    "Red LED lights for optimal hair restoration",
+                    "Remote control for easy operation",
+                    "Comfortable and adjustable design",
+                    "Professional-grade therapy device",
+                    "Battery-powered for convenience"
+                ],
+                fullDescription: `
+                    <p><strong>Professional Hair Restoration</strong></p>
+                    <p>This advanced LED hair growth therapy cap uses red LED lights to stimulate hair follicles and promote natural hair growth. Professional-grade technology for home use.</p>
+                    
+                    <p><strong>Easy to Use</strong></p>
+                    <p>Features a convenient remote control for easy operation. Simply put on the cap and use the remote to start your therapy session.</p>
+                    
+                    <p><strong>Comfortable Design</strong></p>
+                    <p>The cap features an adjustable fit to ensure comfort during use. The lightweight design allows for extended wear without discomfort.</p>
+                `
+            },
+            {
+                id: 4,
+                title: "T5 LED Grow Light for Plants Full Spectrum | Commercial Grade (60cm, 6400k + 2700k)",
+                price: 65.20,
+                image: "./img/4.jpg",
+                description: "Commercial grade LED grow light with full spectrum (6400k + 2700k). Perfect for indoor plant growth and laboratory use. Energy efficient and long-lasting.",
+                features: [
+                    "Full spectrum LED lighting (6400k + 2700k)",
+                    "Commercial grade quality",
+                    "Perfect for indoor plant growth",
+                    "Energy efficient design",
+                    "Long-lasting LED technology",
+                    "60cm length for optimal coverage"
+                ],
+                fullDescription: `
+                    <p><strong>Full Spectrum LED Grow Light</strong></p>
+                    <p>This commercial grade LED grow light provides full spectrum lighting with both 6400k (cool white) and 2700k (warm white) LEDs. Perfect for all stages of plant growth.</p>
+                    
+                    <p><strong>Energy Efficient</strong></p>
+                    <p>LED technology provides excellent light output while consuming minimal energy. This makes it cost-effective for long-term use in both home and commercial settings.</p>
+                `
+            },
+            {
+                id: 5,
+                title: "Professional Lab LED Lighting Equipment - Full Spectrum LED Light Strip for Plant Growth and Laboratory Use",
+                price: 55.99,
+                image: "./img/5.jpg",
+                description: "Professional full spectrum LED light strip for plant growth and laboratory use. High-quality construction with excellent light distribution.",
+                features: [
+                    "Professional grade construction",
+                    "Full spectrum LED technology",
+                    "Excellent light distribution",
+                    "Suitable for laboratory use",
+                    "Durable and reliable design",
+                    "Easy installation"
+                ],
+                fullDescription: `
+                    <p><strong>Professional Laboratory Lighting</strong></p>
+                    <p>This professional-grade LED light strip is designed for both plant growth and laboratory applications. Features excellent light distribution and consistent output.</p>
+                `
+            },
+            {
+                id: 6,
+                title: "3D Printer LED Lamp Kit - Compatible with Bambu Lab A1/A1mini/P1S/P1P/X1C Makerworld",
+                price: 28.50,
+                image: "./img/6.jpg",
+                description: "LED light lamp kit compatible with Bambu Lab A1/A1mini/P1S/P1P/X1C. Easy installation with warm white light and RGB color options.",
+                features: [
+                    "Compatible with multiple Bambu Lab models",
+                    "Warm white light option",
+                    "RGB color options",
+                    "Easy installation",
+                    "DIY-friendly design",
+                    "Enhances 3D printing visibility"
+                ],
+                fullDescription: `
+                    <p><strong>3D Printer LED Lighting</strong></p>
+                    <p>This LED lamp kit is specifically designed for Bambu Lab 3D printers. Enhances visibility during printing with warm white or RGB color options.</p>
+                `
+            }
+        ];
+
+        // Get product ID from URL
+        function getProductId() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('id')) || 1;
+        }
+
+        // Load product details
+        function loadProduct() {
+            const productId = getProductId();
+            const product = products.find(p => p.id === productId) || products[0];
+            
+            const container = document.getElementById('productContainer');
+            const descriptionContent = document.getElementById('descriptionContent');
+
+            // Create thumbnails (using same image for all thumbnails as placeholder)
+            const thumbnails = Array(9).fill(product.image).map((img, index) => 
+                `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
+            ).join('');
+
+            container.innerHTML = `
+                <div class="product-images">
+                    <img src="${product.image}" alt="${product.title}" class="main-image" id="mainImage">
+                    <div class="thumbnail-grid">
+                        ${thumbnails}
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h1 class="product-title">${product.title}</h1>
+                    <div class="product-price">£${product.price.toFixed(2)}</div>
+                    <div class="product-description">${product.description}</div>
+                    <ul class="features-list">
+                        ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <button class="buy-button" onclick="handleBuy()">
+                        Available at
+                        <svg class="amazon-logo" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 15 L30 5 L40 15 L30 25 Z" fill="currentColor"/>
+                            <text x="45" y="20" font-size="14" font-weight="bold">amazon</text>
+                        </svg>
+                    </button>
+                </div>
+            `;
+
+            descriptionContent.innerHTML = product.fullDescription;
+        }
+
+        // Change main image
+        function changeMainImage(src, thumbnail) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // Handle buy button
+        function handleBuy() {
+            alert('Redirecting to Amazon...');
+            // In a real application, this would redirect to the actual product page
+        }
+
+        // Initialize
+        loadProduct();
+    </script>
+</body>
+</html>
