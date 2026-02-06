@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="尤里克 - 海量商品，品质保障，快速配送">
-    <title>尤里克 - 搜索结果</title>
+    <meta name="description" content="Yulike - Massive selection, quality guaranteed, fast delivery">
+    <title>Yulike - Search Results</title>
     <style>
         * {
             margin: 0;
@@ -36,7 +36,7 @@
             line-height: 1.6;
         }
 
-        /* 顶部导航栏 */
+        /* Top Navigation Bar */
         .top-nav {
             background: var(--secondary);
             color: white;
@@ -75,7 +75,7 @@
             text-decoration: none;
         }
 
-        /* 主导航栏 */
+        /* Main Navigation Bar */
         .navbar {
             background: var(--bg-light);
             border-bottom: 1px solid var(--border-color);
@@ -185,7 +185,7 @@
             border-radius: 10px;
         }
 
-        /* 分类导航栏 */
+        /* Category Navigation Bar */
         .category-nav {
             background: var(--secondary);
             color: white;
@@ -222,7 +222,7 @@
             gap: 20px;
         }
 
-        /* 左侧边栏 */
+        /* Left Sidebar */
         .sidebar {
             width: 250px;
             background: var(--bg-light);
@@ -303,7 +303,7 @@
             font-size: 14px;
         }
 
-        /* 主内容区 */
+        /* Main Content Area */
         .content-area {
             flex: 1;
         }
@@ -340,7 +340,7 @@
             color: var(--text-secondary);
         }
 
-        /* 产品网格 */
+        /* Products Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -430,7 +430,7 @@
             background: #f7ca00;
         }
 
-        /* 响应式设计 */
+        /* Responsive Design */
         @media (max-width: 1024px) {
             .sidebar {
                 display: none;
@@ -470,145 +470,145 @@
     </style>
 </head>
 <body>
-    <!-- 顶部导航栏 -->
+    <!-- Top Navigation Bar -->
     <div class="top-nav">
         <div class="top-nav-container">
             <div class="delivery-location">
                 <span>📍</span>
-                <span>配送至：新加坡 170000</span>
-                <a href="#">更新位置</a>
+                <span>Delivering to Singapore 170000</span>
+                <a href="#">Update location</a>
             </div>
             <div class="top-nav-links">
                 <a href="#">EN</a>
-                <a href="#">你好，登录</a>
-                <a href="#">账户和列表</a>
-                <a href="#">退货与订单</a>
+                <a href="#">Hello, sign in</a>
+                <a href="#">Account and Lists</a>
+                <a href="#">Returns & Orders</a>
             </div>
         </div>
     </div>
 
-    <!-- 主导航栏 -->
+    <!-- Main Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="#" class="logo">尤里克</a>
+            <a href="#" class="logo">Yulike</a>
             
             <div class="search-container">
                 <select class="search-select">
-                    <option>全部</option>
-                    <option>电子产品</option>
-                    <option>家居用品</option>
-                    <option>服装配饰</option>
+                    <option>All</option>
+                    <option>Electronics</option>
+                    <option>Home & Kitchen</option>
+                    <option>Fashion</option>
                 </select>
                 <div class="search-input-wrapper">
-                    <input type="text" class="search-input" placeholder="搜索商品" value="lab led">
+                    <input type="text" class="search-input" placeholder="Search products" value="lab led">
                 </div>
                 <button class="search-btn">🔍</button>
             </div>
 
             <div class="navbar-right">
-                <a href="#">账户和列表</a>
-                <a href="#">退货与订单</a>
+                <a href="#">Account and Lists</a>
+                <a href="#">Returns & Orders</a>
                 <div class="cart-icon">
                     <span>🛒</span>
-                    <span>购物车</span>
+                    <span>Cart</span>
                     <span class="cart-count">0</span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- 分类导航栏 -->
+    <!-- Category Navigation Bar -->
     <div class="category-nav">
         <div class="category-nav-container">
-            <a href="#">全部</a>
-            <a href="#">新鲜速递</a>
-            <a href="#">畅销商品</a>
-            <a href="#">今日特价</a>
+            <a href="#">All</a>
+            <a href="#">Fresh & Fast</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Today's Deals</a>
             <a href="#">Prime</a>
-            <a href="#">图书</a>
-            <a href="#">电子产品</a>
-            <a href="#">电脑</a>
-            <a href="#">美妆</a>
-            <a href="#">家居</a>
-            <a href="#">视频游戏</a>
-            <a href="#">杂货</a>
-            <a href="#">礼品卡</a>
-            <a href="#">玩具和游戏</a>
-            <a href="#">宠物用品</a>
-            <a href="#">健康与个人护理</a>
+            <a href="#">Books</a>
+            <a href="#">Electronics</a>
+            <a href="#">Computers</a>
+            <a href="#">Beauty</a>
+            <a href="#">Home</a>
+            <a href="#">Video Games</a>
+            <a href="#">Groceries</a>
+            <a href="#">Gift Cards</a>
+            <a href="#">Toys and Games</a>
+            <a href="#">Pet Supplies</a>
+            <a href="#">Health & Personal Care</a>
         </div>
     </div>
 
-    <!-- 主内容区 -->
+    <!-- Main Content Area -->
     <div class="main-container">
-        <!-- 左侧边栏 -->
+        <!-- Left Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-section">
                 <h3 class="sidebar-title">Prime</h3>
                 <div class="filter-item">
                     <label>
                         <input type="checkbox">
-                        <span>prime | 从新加坡发货</span>
+                        <span>prime | Ships from Singapore</span>
                     </label>
                 </div>
                 <div class="filter-item">
                     <label>
                         <input type="checkbox">
-                        <span>prime | 国际配送</span>
+                        <span>prime | International Shipping</span>
                     </label>
                 </div>
             </div>
 
             <div class="sidebar-section">
-                <h3 class="sidebar-title">符合免费配送条件</h3>
+                <h3 class="sidebar-title">Eligible for Free Delivery</h3>
                 <div class="filter-item">
                     <label>
                         <input type="checkbox">
-                        <span>Amazon免费配送</span>
+                        <span>Free Delivery by Amazon</span>
                     </label>
                 </div>
             </div>
 
             <div class="sidebar-section">
-                <h3 class="sidebar-title">部门</h3>
+                <h3 class="sidebar-title">Department</h3>
                 <div class="filter-item">
-                    <a href="#">工业与科学</a>
+                    <a href="#">Industrial and Scientific</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">玻璃器皿和实验室用品</a>
+                    <a href="#">Glassware & Labware</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">实验室仪器和设备</a>
+                    <a href="#">Lab Instruments & Equipment</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">DIY和工具</a>
+                    <a href="#">DIY and Tools</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">台灯</a>
+                    <a href="#">Table Lamps</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">教育科学套件</a>
+                    <a href="#">Educational Science Kits</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">电脑、组件和配件</a>
+                    <a href="#">Computers, Components and Accessories</a>
                 </div>
                 <div class="filter-item">
-                    <a href="#">连续输出照明</a>
+                    <a href="#">Continuous Output Lighting</a>
                 </div>
             </div>
 
             <div class="sidebar-section">
-                <h3 class="sidebar-title">客户评价</h3>
+                <h3 class="sidebar-title">Customer Reviews</h3>
                 <div class="filter-item">
                     <label>
                         <input type="checkbox">
-                        <span class="stars-filter">★★★★☆ 4星及以上</span>
+                        <span class="stars-filter">★★★★☆ 4 Stars & Up</span>
                     </label>
                 </div>
             </div>
 
             <div class="sidebar-section">
-                <h3 class="sidebar-title">品牌</h3>
+                <h3 class="sidebar-title">Brands</h3>
                 <div class="filter-item">
                     <label>
                         <input type="checkbox">
@@ -624,128 +624,128 @@
             </div>
 
             <div class="sidebar-section">
-                <h3 class="sidebar-title">价格</h3>
+                <h3 class="sidebar-title">Price</h3>
                 <div class="price-range">
-                    <input type="text" class="price-input" placeholder="最低">
+                    <input type="text" class="price-input" placeholder="Min">
                     <span>-</span>
-                    <input type="text" class="price-input" placeholder="最高">
+                    <input type="text" class="price-input" placeholder="Max">
                 </div>
             </div>
         </aside>
 
-        <!-- 主内容区 -->
+        <!-- Main Content Area -->
         <div class="content-area">
             <div class="results-header">
                 <div class="results-count">
-                    1-48 共超过 30,000 条 "lab led" 的搜索结果
+                    1-48 of over 30,000 results for "lab led"
                 </div>
                 <select class="sort-select">
-                    <option>特色</option>
-                    <option>价格：从低到高</option>
-                    <option>价格：从高到低</option>
-                    <option>客户评价</option>
-                    <option>最新上架</option>
+                    <option>Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Customer Reviews</option>
+                    <option>Newest Arrivals</option>
                 </select>
             </div>
 
             <div class="results-note">
-                请查看每个产品页面以了解其他购买选项。价格和其他详细信息可能因产品尺寸和颜色而异。
+                Check each product page for other buying options. Price and other details may vary based on product size and color.
             </div>
 
             <div class="products-grid">
-                <!-- 产品 1 -->
+                <!-- Product 1 -->
                 <div class="product-card">
-                    <img src="./img/1.jpg" alt="T5 LED植物生长灯" class="product-image">
-                    <h3 class="product-title">T5 LED植物生长灯 全光谱 | 商用级 (60cm, 6400k + 2700k)</h3>
+                    <img src="./img/1.jpg" alt="T5 LED Grow Light for Plants" class="product-image">
+                    <h3 class="product-title">T5 LED Grow Light for Plants Full Spectrum | Commercial Grade (60cm, 6400k + 2700k)</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
                         <span>(46)</span>
                     </div>
                     <div class="product-price">S$89.20</div>
-                    <div class="product-offer">使用Atome购买S$120.00可享受S$8.00折扣</div>
-                    <div class="product-delivery">S$1.99 配送费 2月9-10日</div>
-                    <button class="add-to-cart-btn">加入购物车</button>
+                    <div class="product-offer">S$8.00 off S$120.00 with Atome</div>
+                    <div class="product-delivery">S$1.99 delivery 9 - 10 Feb</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
 
-                <!-- 产品 2 -->
+                <!-- Product 2 -->
                 <div class="product-card">
-                    <img src="./img/2.jpg" alt="CMYK LED背光板" class="product-image">
-                    <h3 class="product-title">CMYK LED背光板 适用于Bambu Lab P1/X1/A1系列3D打印机，3D打印机配件替换PCB光刻面板...</h3>
+                    <img src="./img/2.jpg" alt="CMYK LED Backlight Board" class="product-image">
+                    <h3 class="product-title">CMYK LED Backlight Board for Bambu Lab P1/X1/A1 Series 3D Printer, 3D Printer Accessories Replacement PCB Lithophane Panel...</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
                         <span>(46)</span>
                     </div>
                     <div class="product-price">S$31.85</div>
-                    <div class="product-offer">使用Atome购买S$120.00可享受S$8.00折扣</div>
-                    <div class="product-delivery">免费配送 2月11日（星期三）购买S$60符合条件的国际商品。从美国发货。</div>
-                    <button class="add-to-cart-btn">加入购物车</button>
+                    <div class="product-offer">S$8.00 off S$120.00 with Atome</div>
+                    <div class="product-delivery">FREE delivery Wed, 11 Feb on S$60 of eligible international items. Ships from US.</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
 
-                <!-- 产品 3 -->
+                <!-- Product 3 -->
                 <div class="product-card">
-                    <img src="./img/3.jpg" alt="3D打印机LED灯套件" class="product-image">
-                    <h3 class="product-title">3D打印机LED灯套件，001 LED灯 兼容Bambu Lab A1/A1mini/P1S/P1P/X1C Makerworld制造商供应</h3>
+                    <img src="./img/3.jpg" alt="3D Printer LED Lamp Kit" class="product-image">
+                    <h3 class="product-title">3D Printer Led Lamp Kit, 001 LED Light Lamp Compatible with Bambu Lab A1/A1mini/P1S/P1P/X1C Makerworld Maker's Supply</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
                         <span>(3)</span>
                     </div>
                     <div class="product-price">S$24.01</div>
-                    <div class="product-offer">使用Atome购买S$120.00可享受S$8.00折扣</div>
-                    <div class="product-delivery">免费配送 2月13日（星期五）购买S$60符合条件的国际商品。从美国发货。</div>
-                    <button class="add-to-cart-btn">加入购物车</button>
+                    <div class="product-offer">S$8.00 off S$120.00 with Atome</div>
+                    <div class="product-delivery">FREE delivery Fri, 13 Feb on S$60 of eligible international items. Ships from US.</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
 
-                <!-- 产品 4 -->
+                <!-- Product 4 -->
                 <div class="product-card">
-                    <img src="./img/4.jpg" alt="Bambu Lab Makerworld LED灯套件" class="product-image">
-                    <h3 class="product-title">Bambu Lab Makerworld MH001 3D打印LED灯套件 - 暖白光/RGB彩色，DIY兼容BambuLab P1P/P1S，A1/A1...</h3>
+                    <img src="./img/4.jpg" alt="Bambu Lab Makerworld LED Lamp Kit" class="product-image">
+                    <h3 class="product-title">Bambu Lab Makerworld MH001 3D Printed LED Lamp Kit - Warm White Light/RGB Color, DIY Compatible with BambuLab P1P/P1S, A1/A1...</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
                         <span>(1)</span>
                     </div>
                     <div class="product-price">S$24.28</div>
-                    <div class="product-offer">使用Atome购买S$120.00可享受S$8.00折扣</div>
-                    <div class="product-delivery">免费配送 2月11日（星期三）购买S$60符合条件的国际商品。从美国发货。</div>
-                    <button class="add-to-cart-btn">加入购物车</button>
+                    <div class="product-offer">S$8.00 off S$120.00 with Atome</div>
+                    <div class="product-delivery">FREE delivery Wed, 11 Feb on S$60 of eligible international items. Ships from US.</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
 
-                <!-- 产品 5 -->
+                <!-- Product 5 -->
                 <div class="product-card">
-                    <img src="./img/5.jpg" alt="Groovy实验室开关LED套装" class="product-image">
-                    <h3 class="product-title">Groovy GN-SW03SET 实验室开关LED套装</h3>
+                    <img src="./img/5.jpg" alt="Groovy Lab Switch LED Set" class="product-image">
+                    <h3 class="product-title">Groovy GN-SW03SET Lab Switch LED Set</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★☆</span>
                         <span>(176)</span>
                     </div>
                     <div class="product-price">S$15.07</div>
-                    <div class="product-offer">使用Atome购买S$120.00可享受S$8.00折扣</div>
-                    <div class="product-delivery">免费配送 2月12日（星期四）购买S$60符合条件的国际商品。或最快配送 2月11日（星期三）。从日本发货。</div>
-                    <button class="add-to-cart-btn">加入购物车</button>
+                    <div class="product-offer">S$8.00 off S$120.00 with Atome</div>
+                    <div class="product-delivery">FREE delivery Thu, 12 Feb on S$60 of eligible international items. Or fastest delivery Wed, 11 Feb. Ships from JP.</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
 
-                <!-- 产品 6 -->
+                <!-- Product 6 -->
                 <div class="product-card">
-                    <img src="./img/6.jpg" alt="LED产品" class="product-image">
-                    <h3 class="product-title">LED实验室照明设备 专业级全光谱LED灯条 适用于植物生长和实验室使用</h3>
+                    <img src="./img/6.jpg" alt="LED Product" class="product-image">
+                    <h3 class="product-title">LED Lab Lighting Equipment Professional Full Spectrum LED Light Strip for Plant Growth and Laboratory Use</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★☆</span>
                         <span>(89)</span>
                     </div>
                     <div class="product-price">S$45.99</div>
-                    <div class="product-offer">使用Atome购买S$120.00可享受S$8.00折扣</div>
-                    <div class="product-delivery">免费配送 2月10日（星期二）购买S$60符合条件的国际商品。从中国发货。</div>
-                    <button class="add-to-cart-btn">加入购物车</button>
+                    <div class="product-offer">S$8.00 off S$120.00 with Atome</div>
+                    <div class="product-delivery">FREE delivery Tue, 10 Feb on S$60 of eligible international items. Ships from CN.</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 搜索功能
+        // Search functionality
         document.querySelector('.search-btn').addEventListener('click', function() {
             const searchTerm = document.querySelector('.search-input').value;
             if (searchTerm) {
-                alert(`搜索关键词：${searchTerm}`);
+                alert(`Search keyword: ${searchTerm}`);
             }
         });
 
@@ -755,7 +755,7 @@
             }
         });
 
-        // 加入购物车功能
+        // Add to cart functionality
         document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const productName = this.parentElement.querySelector('.product-title').textContent;
@@ -763,13 +763,13 @@
                 let count = parseInt(cartCount.textContent) || 0;
                 count++;
                 cartCount.textContent = count;
-                alert(`已添加 "${productName.substring(0, 30)}..." 到购物车！`);
+                alert(`Added "${productName.substring(0, 30)}..." to cart!`);
             });
         });
 
-        // 购物车点击
+        // Cart click
         document.querySelector('.cart-icon').addEventListener('click', function() {
-            alert('进入购物车页面...');
+            alert('Go to cart page...');
         });
     </script>
 </body>
