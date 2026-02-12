@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="APSNOW - Product Details">
-    <title>APSNOW - Product Details</title>
+    <title>PURSNIC - Product Details</title>
     <style>
         * {
             margin: 0;
@@ -37,7 +38,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .navbar-container {
@@ -114,6 +115,27 @@
             border-radius: 12px;
             background: var(--bg-gray);
             border: 1px solid var(--border-color);
+        }
+
+        .full-view-button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .full-view-button:hover {
+            border-color: var(--primary-red);
+            background: var(--bg-gray);
+            color: var(--primary-red);
         }
 
         .thumbnail-grid {
@@ -427,6 +449,13 @@
             border-width: 2px;
         }
 
+        .color-option-price {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-red);
+            margin-top: 4px;
+        }
+
         /* Product Specifications */
         .product-specifications {
             margin: 30px 0;
@@ -503,6 +532,233 @@
             font-weight: 600;
         }
 
+        /* Product Information Section */
+        .product-information-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .info-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .info-section-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        .info-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+            width: 40%;
+        }
+
+        .info-table td:last-child {
+            color: var(--text-secondary);
+        }
+
+        .info-table a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .info-table a:hover {
+            text-decoration: underline;
+        }
+
+        .rating-stars {
+            color: #ffa41c;
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 1024px) {
+            .product-information-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* From the Brand Section */
+        .from-brand-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 30px;
+        }
+
+        .from-brand-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+        }
+
+        /* Product Description Section */
+        .product-description-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 30px;
+        }
+
+        .product-description-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+        }
+
+        .description-images-grid {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .description-image-item {
+            width: 100%;
+            overflow: hidden;
+            background: var(--bg-gray);
+        }
+
+        .description-image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .description-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .description-carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .description-carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .description-carousel-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Brand carousel with fixed background */
+        .brand-carousel-container {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .brand-carousel-foreground-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content;
+            height: 100%;
+            min-height: 400px;
+            align-items: center;
+            gap: 10px;
+            padding: 40px 20px;
+        }
+
+        .brand-carousel-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .brand-carousel-item .brand-carousel-foreground {
+            position: relative;
+            width: 60%;
+            max-width: 600px;
+            height: auto;
+            z-index: 1;
+        }
+
+        .brand-carousel-item .brand-carousel-foreground img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .description-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .description-carousel-nav:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .description-carousel-nav.prev {
+            left: 20px;
+        }
+
+        .description-carousel-nav.next {
+            right: 20px;
+        }
+
+        .description-carousel-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         /* Description Section */
         .description-section {
             margin-top: 60px;
@@ -554,6 +810,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -577,7 +834,19 @@
             <!-- Product content will be loaded here -->
         </div>
 
-   
+        <div class="from-brand-section" id="fromBrandSection">
+            <!-- From the brand content will be loaded here -->
+        </div>
+
+        <div class="product-description-section" id="productDescriptionSection">
+            <!-- Product Description content will be loaded here -->
+        </div>
+
+        <div class="product-information-section" id="productInformationSection">
+            <!-- Product Information and Additional Information will be loaded here -->
+        </div>
+
+
     </section>
 
     <script>
@@ -772,6 +1041,24 @@
                     { label: "Finish type", value: "Matte" },
                     { label: "Color options", value: "Warm White, Cool White, Natural White, RGB" }
                 ],
+                productInformation: [
+                    { label: "Product Dimensions", value: "3 x 5 x 5 cm; 80 g" },
+                    { label: "Specific uses", value: "Balcony, Cabinet, Garage, Home, Patio" },
+                    { label: "Finish types", value: "Matte" },
+                    { label: "Specification met", value: "CE, FCC, RoHS, UKCA" },
+                    { label: "Is assembly required", value: "No" },
+                    { label: "Number of pieces", value: "2" },
+                    { label: "Batteries required", value: "No" },
+                    { label: "Included components", value: "2 Pack Plug in Night Lights" },
+                    { label: "Item weight", value: "0.08 Kilograms" }
+                ],
+                additionalInformation: [
+                    { label: "ASIN", value: "B0CZMTN8X3" },
+                    { label: "Item model number", value: "KMNL00102UK" },
+                    { label: "Date First Available", value: "30 April 2024" },
+                    { label: "Customer Reviews", value: "4.4 out of 5 stars", rating: 4.4, totalRatings: 3008 },
+                    { label: "Best Sellers Rank", value: "#28 in Lighting", link: "#" }
+                ],
                 aboutItem: `
                     <p><strong>【Dusk to Dawn Sensor】</strong></p>
                     <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
@@ -867,12 +1154,28 @@
                         label: "ASIN",
                         value: "B0D9JJ91H6"
                     },
-                    { label: "Base material", value: "Plastic" },
-                    { label: "Product dimensions", value: "5D x 5W x 5H centimetres" },
-                    { label: "Item weight", value: "0.08 Kilograms" },
-                    { label: "Lamp type", value: "LED" },
-                    { label: "Finish type", value: "Matte" },
-                    { label: "Color options", value: "Warm White, Cool White, Natural White, RGB" }
+                    { label: "Finish type", value: "Unfinished" },
+                    { label: "Bulb base", value: "Prong" },
+                    { label: "Product dimensions", value: "5.5D x 5.5W x 2.8H centimetres" },
+                    { label: "Lamp type", value: "Night Light" },
+                ],
+                productInformation: [
+                    { label: "Product Dimensions", value: "	3 x 5 x 5 cm; 80 g" },
+                    { label: "Specific uses", value: "Balcony, Cabinet, Garage, Home, Patio" },
+                    { label: "Finish types", value: "Matte" },
+                    { label: "Specification met", value: "CE, FCC, RoHS, UKCA" },
+                    { label: "Is assembly required", value: "No" },
+                    { label: "Number of pieces", value: "4" },
+                    { label: "Batteries required", value: "No" },
+                    { label: "Included components", value: "4 Pack Plug in Night Lights" },
+                    { label: "Item weight", value: "0.08 Kilograms" }
+                ],
+                additionalInformation: [
+                    { label: "ASIN", value: "B0D9JJ91H6" },
+                    { label: "Item model number", value: "KMNL00104UK" },
+                    { label: "Date First Available", value: "30 April 2024" },
+                    { label: "Customer Reviews", value: "4.4 out of 5 stars", rating: 4.4, totalRatings: 3008 },
+                    { label: "Best Sellers Rank", value: "#28 in Lighting", link: "#" }
                 ],
                 aboutItem: `
                     <p><strong>【Dusk to Dawn Sensor】</strong></p>
@@ -947,7 +1250,7 @@
         function loadProduct() {
             const productId = getProductId();
             const product = products.find(p => p.id === productId) || products[0];
-            
+
             const container = document.getElementById('productContainer');
             const descriptionContent = document.getElementById('descriptionContent');
 
@@ -961,7 +1264,7 @@
             const hasMore = productImages.length > maxThumbnails;
             const remainingCount = productImages.length - maxThumbnails;
 
-            const thumbnails = visibleImages.map((img, index) => 
+            const thumbnails = visibleImages.map((img, index) =>
                 `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
             ).join('');
 
@@ -977,15 +1280,15 @@
             // Create color variants selector if product has color variants
             let colorVariantsHTML = '';
             if (product.colorVariants && product.colorVariants.length > 0) {
-                const colorOptions = product.colorVariants.map((variant, index) => 
+                const colorOptions = product.colorVariants.map((variant, index) =>
                     `<button class="color-option ${index === 0 ? 'active' : ''}" onclick="changeColorVariant(${productId}, ${index})">
                         <img src="${variant.mainImage}" alt="${variant.name}" class="color-option-thumbnail">
-                      
+                        <span>${variant.name}</span>
+                        <div class="color-option-price">£${product.price.toFixed(2)}</div>
                     </button>`
                 ).join('');
                 colorVariantsHTML = `
                     <div class="color-variants">
-                        <div class="color-variants-title">Select Color:</div>
                         <div class="color-options">
                             ${colorOptions}
                         </div>
@@ -996,7 +1299,7 @@
             // Create specifications HTML if product has specifications
             let specificationsHTML = '';
             if (product.specifications && product.specifications.length > 0) {
-                const specsList = product.specifications.map(spec => 
+                const specsList = product.specifications.map(spec =>
                     `<li>
                         <span class="spec-label">${spec.label}:</span>
                         <span class="spec-value">${spec.value}</span>
@@ -1028,25 +1331,341 @@
             container.innerHTML = `
                 <div class="product-images">
                     <img src="${mainImage}" alt="${product.title}" class="main-image" id="mainImage">
+                    <button class="full-view-button" onclick="openFullView(document.getElementById('mainImage').src)">Click to see full view</button>
                     <div class="thumbnail-grid" id="thumbnailGrid">
                         ${thumbnails}${placeholderThumbnail}
                     </div>
                 </div>
                 <div class="product-info">
                     <h1 class="product-title">${product.title}</h1>
-                    ${priceDisplay}
                     ${colorVariantsHTML}
+                    ${priceDisplay}
                     ${specificationsHTML}
                     <button class="buy-button" onclick="handleBuy(${product.id})">
                         Buy Now
                   
                     </button>
                     ${aboutItemHTML}
-                   
+                    
                 </div>
             `;
 
+            // Generate Product Information and Additional Information sections
+            const infoSection = document.getElementById('productInformationSection');
+            if (product.productInformation && product.additionalInformation) {
+                // Generate Product Information table
+                const productInfoRows = product.productInformation.map(item =>
+                    `<tr>
+                        <td>${item.label}</td>
+                        <td>${item.value}</td>
+                    </tr>`
+                ).join('');
+
+                // Generate Additional Information table
+                const additionalInfoRows = product.additionalInformation.map(item => {
+                    let valueHtml = item.value;
+                    if (item.rating) {
+                        const fullStars = Math.floor(item.rating);
+                        const hasHalfStar = item.rating % 1 >= 0.5;
+                        let starsHtml = '';
+                        for (let i = 0; i < fullStars; i++) {
+                            starsHtml += '<span class="rating-stars">★</span>';
+                        }
+                        if (hasHalfStar) {
+                            starsHtml += '<span class="rating-stars">☆</span>';
+                        }
+                        valueHtml = `${starsHtml} ${item.value} (${item.totalRatings.toLocaleString()} ratings)`;
+                    }
+                    if (item.link) {
+                        valueHtml = `<a href="${item.link}">${item.value}</a>`;
+                    }
+                    return `<tr>
+                        <td>${item.label}</td>
+                        <td>${valueHtml}</td>
+                    </tr>`;
+                }).join('');
+
+                infoSection.innerHTML = `
+                    <div class="info-section">
+                        <h3 class="info-section-title">Product Information</h3>
+                        <div class="info-section-subtitle">Technical Details</div>
+                        <table class="info-table">
+                            ${productInfoRows}
+                        </table>
+                    </div>
+                    <div class="info-section">
+                        <h3 class="info-section-title">Additional Information</h3>
+                        <table class="info-table">
+                            ${additionalInfoRows}
+                        </table>
+                    </div>
+                `;
+            } else {
+                infoSection.innerHTML = '';
+            }
+
+            // Generate From the Brand section with carousel
+            const fromBrandSection = document.getElementById('fromBrandSection');
+            if (productId === 7 || productId === 8) {
+                // Use same images for both product 7 and 8 (use product 7's images)
+                const baseProductId = 7;
+                // Background image
+                const bgImagePath = `./img/${baseProductId}-brand-bg.jpg`;
+
+                // Generate brand images (7-brand-1, 7-brand-2, etc.)
+                const brandImages = [];
+                for (let i = 1; i <= 10; i++) {
+                    const imgPath = `./img/${baseProductId}-brand-${i}.jpg`;
+                    brandImages.push(imgPath);
+                }
+
+                const brandCarouselItems = brandImages.map((img, index) =>
+                    `<div class="brand-carousel-item">
+                        <div class="brand-carousel-foreground">
+                            <img src="${img}" alt="From the brand ${index + 1}" onerror="this.closest('.brand-carousel-item').style.display='none'">
+                        </div>
+                    </div>`
+                ).join('');
+
+                fromBrandSection.innerHTML = `
+                    <h2 class="from-brand-title">From the brand</h2>
+                    <div class="description-carousel" id="fromBrandCarousel">
+                        <button class="description-carousel-nav prev" onclick="navigateFromBrandCarousel(-1)">‹</button>
+                        <div class="brand-carousel-container" id="fromBrandCarouselContainer" style="background-image: url('${bgImagePath}');">
+                            <div class="brand-carousel-foreground-container" id="fromBrandCarouselForeground">
+                                ${brandCarouselItems}
+                            </div>
+                        </div>
+                        <button class="description-carousel-nav next" onclick="navigateFromBrandCarousel(1)">›</button>
+                    </div>
+                `;
+
+                // Initialize from brand carousel after images load
+                const brandForegroundContainer = document.getElementById('fromBrandCarouselForeground');
+                if (brandForegroundContainer) {
+                    const brandImages = brandForegroundContainer.querySelectorAll('img');
+                    let loadedCount = 0;
+                    const totalBrandImages = brandImages.length;
+
+                    if (totalBrandImages === 0) {
+                        setTimeout(() => {
+                            initFromBrandCarousel();
+                        }, 100);
+                    } else {
+                        brandImages.forEach((img, index) => {
+                            img.onload = () => {
+                                loadedCount++;
+                                if (loadedCount === totalBrandImages || index === totalBrandImages - 1) {
+                                    // Wait for DOM to update before calculating widths
+                                    setTimeout(() => {
+                                        initFromBrandCarousel();
+                                    }, 100);
+                                }
+                            };
+                            img.onerror = () => {
+                                // Hide the entire carousel item (img -> brand-carousel-foreground -> brand-carousel-item)
+                                const carouselItem = img.closest('.brand-carousel-item');
+                                if (carouselItem) {
+                                    carouselItem.style.display = 'none';
+                                }
+                                loadedCount++;
+                                if (loadedCount === totalBrandImages || index === totalBrandImages - 1) {
+                                    setTimeout(() => {
+                                        initFromBrandCarousel();
+                                    }, 100);
+                                }
+                            };
+                            // If image is already loaded
+                            if (img.complete) {
+                                if (img.naturalHeight === 0) {
+                                    const carouselItem = img.closest('.brand-carousel-item');
+                                    if (carouselItem) {
+                                        carouselItem.style.display = 'none';
+                                    }
+                                }
+                                loadedCount++;
+                                if (loadedCount === totalBrandImages) {
+                                    setTimeout(() => {
+                                        initFromBrandCarousel();
+                                    }, 100);
+                                }
+                            }
+                        });
+                    }
+                }
+            } else {
+                fromBrandSection.innerHTML = `
+                    <h2 class="from-brand-title">From the brand</h2>
+                `;
+            }
+
+            // Generate Product Description section with image grid
+            const productDescriptionSection = document.getElementById('productDescriptionSection');
+            if (productId === 7 || productId === 8) {
+                // Use same images for both product 7 and 8 (use product 7's images)
+                const baseProductId = 7;
+                // Generate description images (try .jfif first, fallback to .jpg, hide if both fail)
+                const imageItems = [];
+                for (let i = 1; i <= 10; i++) {
+                    const jfifPath = `./img/${baseProductId}-detail-${i}.jfif`;
+                    const jpgPath = `./img/${baseProductId}-detail-${i}.jpg`;
+                    imageItems.push(`
+                        <div class="description-image-item">
+                            <img src="${jfifPath}" alt="Product Description ${i}" 
+                                 onerror="if(this.src.indexOf('.jfif')!==-1){this.src='${jpgPath}';}else{this.parentElement.style.display='none';}">
+                        </div>
+                    `);
+                }
+
+                productDescriptionSection.innerHTML = `
+                    <h2 class="product-description-title">Product Description</h2>
+                    <div class="description-images-grid">
+                        ${imageItems.join('')}
+                    </div>
+                `;
+            } else {
+                productDescriptionSection.innerHTML = '';
+            }
+
             // descriptionContent.innerHTML = product.fullDescription;
+        }
+
+        // Description carousel functions
+        let currentDescriptionSlide = 0;
+        let totalDescriptionSlides = 0;
+
+        function initDescriptionCarousel() {
+            const container = document.getElementById('descriptionCarouselContainer');
+            if (!container) return;
+
+            // Count visible items (items that are not hidden)
+            const visibleItems = Array.from(container.querySelectorAll('.description-carousel-item')).filter(item => {
+                return item.style.display !== 'none' && window.getComputedStyle(item).display !== 'none';
+            });
+
+            totalDescriptionSlides = visibleItems.length;
+            currentDescriptionSlide = 0;
+
+            updateDescriptionCarousel();
+        }
+
+        function navigateDescriptionCarousel(direction) {
+            if (totalDescriptionSlides === 0) return;
+
+            currentDescriptionSlide += direction;
+
+            if (currentDescriptionSlide < 0) {
+                currentDescriptionSlide = totalDescriptionSlides - 1;
+            } else if (currentDescriptionSlide >= totalDescriptionSlides) {
+                currentDescriptionSlide = 0;
+            }
+
+            updateDescriptionCarousel();
+        }
+
+        function updateDescriptionCarousel() {
+            const container = document.getElementById('descriptionCarouselContainer');
+            if (!container || totalDescriptionSlides === 0) return;
+
+            container.style.transform = `translateX(-${currentDescriptionSlide * 100}%)`;
+
+            // Update nav buttons
+            const prevBtn = document.querySelector('#descriptionCarousel .description-carousel-nav.prev');
+            const nextBtn = document.querySelector('#descriptionCarousel .description-carousel-nav.next');
+
+            if (prevBtn && totalDescriptionSlides > 1) {
+                prevBtn.disabled = false;
+            }
+            if (nextBtn && totalDescriptionSlides > 1) {
+                nextBtn.disabled = false;
+            }
+        }
+
+        // From the Brand carousel functions
+        let currentFromBrandOffset = 0;
+        let totalFromBrandSlides = 0;
+        let itemWidth = 0;
+
+        function initFromBrandCarousel() {
+            const foregroundContainer = document.getElementById('fromBrandCarouselForeground');
+            if (!foregroundContainer) return;
+
+            // Count visible items (items that are not hidden)
+            const visibleItems = Array.from(foregroundContainer.querySelectorAll('.brand-carousel-item')).filter(item => {
+                return item.style.display !== 'none' && window.getComputedStyle(item).display !== 'none';
+            });
+
+            totalFromBrandSlides = visibleItems.length;
+            currentFromBrandOffset = 0;
+
+            // Calculate item width (including gap) - use average width of visible items
+            if (visibleItems.length > 0) {
+                const containerStyle = window.getComputedStyle(foregroundContainer);
+                const gap = parseInt(containerStyle.gap) || 20;
+
+                // Calculate average width of visible items
+                let totalWidth = 0;
+                visibleItems.forEach(item => {
+                    totalWidth += item.offsetWidth;
+                });
+                itemWidth = Math.ceil(totalWidth / visibleItems.length) + gap;
+            }
+
+            updateFromBrandCarousel();
+        }
+
+        function navigateFromBrandCarousel(direction) {
+            if (totalFromBrandSlides === 0 || itemWidth === 0) return;
+
+            const container = document.getElementById('fromBrandCarouselContainer');
+            const foregroundContainer = document.getElementById('fromBrandCarouselForeground');
+            if (!container || !foregroundContainer) return;
+
+            const containerWidth = container.offsetWidth;
+            const maxOffset = Math.max(0, foregroundContainer.scrollWidth - containerWidth);
+
+            currentFromBrandOffset += direction * itemWidth;
+
+            // Clamp offset to valid range
+            if (currentFromBrandOffset < 0) {
+                currentFromBrandOffset = 0;
+            } else if (currentFromBrandOffset > maxOffset) {
+                currentFromBrandOffset = maxOffset;
+            }
+
+            updateFromBrandCarousel();
+        }
+
+        function updateFromBrandCarousel() {
+            const foregroundContainer = document.getElementById('fromBrandCarouselForeground');
+            const container = document.getElementById('fromBrandCarouselContainer');
+            if (!foregroundContainer || !container || totalFromBrandSlides === 0) return;
+
+            // Calculate max offset
+            const containerWidth = container.offsetWidth;
+            const maxOffset = Math.max(0, foregroundContainer.scrollWidth - containerWidth);
+
+            // Clamp current offset to valid range
+            if (currentFromBrandOffset > maxOffset) {
+                currentFromBrandOffset = maxOffset;
+            }
+            if (currentFromBrandOffset < 0) {
+                currentFromBrandOffset = 0;
+            }
+
+            // Move the foreground container by offset pixels
+            foregroundContainer.style.transform = `translateX(-${currentFromBrandOffset}px)`;
+
+            // Update nav buttons based on scroll position
+            const prevBtn = document.querySelector('#fromBrandCarousel .description-carousel-nav.prev');
+            const nextBtn = document.querySelector('#fromBrandCarousel .description-carousel-nav.next');
+
+            if (prevBtn) {
+                prevBtn.disabled = currentFromBrandOffset <= 0;
+            }
+            if (nextBtn) {
+                nextBtn.disabled = currentFromBrandOffset >= maxOffset || maxOffset === 0;
+            }
         }
 
         // Change main image
@@ -1076,7 +1695,7 @@
             const hasMore = variant.images.length > maxThumbnails;
             const remainingCount = variant.images.length - maxThumbnails;
 
-            const thumbnails = visibleImages.map((img, index) => 
+            const thumbnails = visibleImages.map((img, index) =>
                 `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
             ).join('');
 
@@ -1102,13 +1721,28 @@
         let currentModalImages = [];
         let currentModalIndex = 0;
 
+        // Open full view for main image
+        function openFullView(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalContent = document.getElementById('modalGallery');
+
+            modalContent.innerHTML = `
+                <div class="modal-image-container">
+                    <img src="${imageSrc}" alt="Full view" class="modal-image">
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         // Open image modal
         function openImageModal(productId, variantIndex = null) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
             let imagesToShow = [];
-            
+
             // If variantIndex is not provided, try to detect current active variant
             if (variantIndex === null && product.colorVariants && product.colorVariants.length > 0) {
                 const activeColorOption = document.querySelector('.color-option.active');
@@ -1130,7 +1764,7 @@
 
             const modal = document.getElementById('imageModal');
             const modalContent = document.getElementById('modalGallery');
-            
+
             // Display first image with navigation
             updateModalImage();
 
@@ -1142,7 +1776,7 @@
         function updateModalImage() {
             const modalContent = document.getElementById('modalGallery');
             const currentImage = currentModalImages[currentModalIndex];
-            
+
             if (!currentImage) return;
 
             const prevDisabled = currentModalIndex === 0 ? 'disabled' : '';
@@ -1162,14 +1796,14 @@
         // Navigate modal images
         function navigateModalImage(direction) {
             currentModalIndex += direction;
-            
+
             // Clamp index to valid range
             if (currentModalIndex < 0) {
                 currentModalIndex = 0;
             } else if (currentModalIndex >= currentModalImages.length) {
                 currentModalIndex = currentModalImages.length - 1;
             }
-            
+
             updateModalImage();
         }
 
@@ -1184,7 +1818,7 @@
         function changeMainImageFromModal(imgSrc) {
             const mainImage = document.getElementById('mainImage');
             mainImage.src = imgSrc;
-            
+
             // Update active thumbnail
             const imgFileName = imgSrc.split('/').pop();
             document.querySelectorAll('.thumbnail').forEach(t => {
@@ -1197,7 +1831,7 @@
                     }
                 }
             });
-            
+
             closeImageModal();
         }
 
@@ -1209,14 +1843,14 @@
                 window.open('https://www.amazon.co.uk/dp/B0D9JJ91H6?th=1', '_blank');
             } else {
                 window.open('https://www.amazon.com/', '_blank');
-            } 
+            }
         }
 
         // Initialize
         loadProduct();
 
         // Close modal when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const modal = document.getElementById('imageModal');
             if (event.target === modal) {
                 closeImageModal();
@@ -1224,7 +1858,7 @@
         });
 
         // Close modal with Escape key and navigate with arrow keys
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             const modal = document.getElementById('imageModal');
             if (!modal.classList.contains('active')) return;
 
@@ -1235,6 +1869,17 @@
             } else if (event.key === 'ArrowRight') {
                 navigateModalImage(1);
             }
+        });
+
+        // Recalculate brand carousel on window resize
+        let resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (document.getElementById('fromBrandCarouselForeground')) {
+                    initFromBrandCarousel();
+                }
+            }, 250);
         });
     </script>
 
@@ -1248,4 +1893,5 @@
         </div>
     </div>
 </body>
+
 </html>
