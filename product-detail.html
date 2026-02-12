@@ -110,7 +110,7 @@
         .main-image {
             width: 100%;
             aspect-ratio: 1;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 12px;
             background: var(--bg-gray);
             border: 1px solid var(--border-color);
@@ -125,16 +125,177 @@
         .thumbnail {
             width: 100%;
             aspect-ratio: 1;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 8px;
             cursor: pointer;
             border: 2px solid transparent;
             transition: border-color 0.3s;
+            background: var(--bg-gray);
         }
 
         .thumbnail:hover,
         .thumbnail.active {
             border-color: var(--primary-red);
+        }
+
+        .thumbnail-more {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-gray);
+            color: var(--text-secondary);
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .thumbnail-more:hover {
+            border-color: var(--primary-red);
+            background: var(--bg-light);
+            color: var(--primary-red);
+        }
+
+        /* Image Gallery Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .image-modal.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 100px 40px;
+        }
+
+        .modal-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            background: var(--bg-light);
+            pointer-events: auto;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 1002;
+            line-height: 1;
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-nav.prev {
+            left: -80px;
+        }
+
+        .modal-nav.next {
+            right: -80px;
+        }
+
+        @media (max-width: 1024px) {
+            .modal-nav.prev {
+                left: 10px;
+            }
+
+            .modal-nav.next {
+                right: 10px;
+            }
+
+            .modal-content {
+                padding: 60px 60px 40px;
+            }
+        }
+
+        .modal-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .modal-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
         }
 
         /* Product Info */
@@ -208,6 +369,140 @@
             height: 20px;
         }
 
+        /* Color Variants */
+        .color-variants {
+            margin: 20px 0;
+        }
+
+        .color-variants-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            padding: 8px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-light);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 12px;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            min-width: 80px;
+        }
+
+        .color-option-thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-gray);
+        }
+
+        .color-option:hover {
+            border-color: var(--primary-red);
+            background: var(--bg-gray);
+        }
+
+        .color-option.active {
+            border-color: var(--primary-red);
+            background: var(--bg-light);
+        }
+
+        .color-option.active .color-option-thumbnail {
+            border-color: var(--primary-red);
+            border-width: 2px;
+        }
+
+        /* Product Specifications */
+        .product-specifications {
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--bg-gray);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .specifications-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .specifications-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .specifications-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+        }
+
+        .specifications-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            min-width: 140px;
+        }
+
+        .spec-value {
+            color: var(--text-secondary);
+            flex: 1;
+        }
+
+        /* About This Item Section */
+        .about-item {
+            margin: 30px 0;
+        }
+
+        .about-item-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .about-item-content {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-item-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .about-item-content li {
+            margin-bottom: 12px;
+        }
+
+        .about-item-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         /* Description Section */
         .description-section {
             margin-top: 60px;
@@ -264,7 +559,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="logo">
-                <span class="red">Ulike</span><span class="blue"></span>
+                <span class="red"></span><span class="blue"></span>
             </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -282,12 +577,7 @@
             <!-- Product content will be loaded here -->
         </div>
 
-        <div class="description-section">
-            <h2 class="description-title">Description</h2>
-            <div class="description-content" id="descriptionContent">
-                <!-- Description will be loaded here -->
-            </div>
-        </div>
+   
     </section>
 
     <script>
@@ -443,14 +733,166 @@
             },
             {
                 id: 7,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs",
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack",
                 price: 12.99,
-                image: "./img/7-1.jpg",
-                images: ["./img/7-1.jpg", "./img/7-2.jpg", "./img/7-3.jpg", "./img/7-4.jpg", "./img/7-5.jpg"],
-                variants: [
-                    { pack: "2 Pack", price: 12.99 },
-                    { pack: "4 Pack", price: 16.99 }
+                image: "./img/7-1-1.jpg",
+                images: ["./img/7-1-1.jpg", "./img/7-1-2.jpg", "./img/7-1-3.jpg", "./img/7-1-4.jpg", "./img/7-1-5.jpg", "./img/7-1-6.jpg", "./img/7-1-7.jpg", "./img/7-1-8.jpg", "./img/7-1-9.jpg", "./img/7-1-10.jpg"],
+                colorVariants: [
+                    {
+                        name: "Color 1",
+                        mainImage: "./img/7-1-1.jpg",
+                        images: ["./img/7-1-1.jpg", "./img/7-1-2.jpg", "./img/7-1-3.jpg", "./img/7-1-4.jpg", "./img/7-1-5.jpg", "./img/7-1-6.jpg", "./img/7-1-7.jpg", "./img/7-1-8.jpg", "./img/7-1-9.jpg", "./img/7-1-10.jpg"]
+                    },
+                    {
+                        name: "Color 2",
+                        mainImage: "./img/7-2-1.jpg",
+                        images: ["./img/7-2-1.jpg", "./img/7-2-2.jpg", "./img/7-2-3.jpg", "./img/7-2-4.jpg", "./img/7-2-5.jpg", "./img/7-2-6.jpg", "./img/7-2-7.jpg", "./img/7-2-8.jpg", "./img/7-2-9.jpg"]
+                    },
+                    {
+                        name: "Color 3",
+                        mainImage: "./img/7-3-1.jpg",
+                        images: ["./img/7-3-1.jpg", "./img/7-3-2.jpg", "./img/7-3-3.jpg", "./img/7-3-4.jpg", "./img/7-3-5.jpg", "./img/7-3-6.jpg", "./img/7-3-7.jpg", "./img/7-3-8.jpg", "./img/7-3-9.jpg"]
+                    },
+                    {
+                        name: "Color 4",
+                        mainImage: "./img/7-4-1.jpg",
+                        images: ["./img/7-4-1.jpg", "./img/7-4-2.jpg", "./img/7-4-3.jpg", "./img/7-4-4.jpg", "./img/7-4-5.jpg", "./img/7-4-6.jpg", "./img/7-4-7.jpg", "./img/7-4-8.jpg"]
+                    }
                 ],
+                specifications: [
+                    { label: "Brand", value: "PURSNIC" },
+                    {
+                        label: "ASIN",
+                        value: "B0CZMTN8X3"
+                    },
+                    { label: "Base material", value: "Plastic" },
+                    { label: "Product dimensions", value: "5D x 5W x 5H centimetres" },
+                    { label: "Item weight", value: "0.08 Kilograms" },
+                    { label: "Lamp type", value: "LED" },
+                    { label: "Finish type", value: "Matte" },
+                    { label: "Color options", value: "Warm White, Cool White, Natural White, RGB" }
+                ],
+                aboutItem: `
+                    <p><strong>【Dusk to Dawn Sensor】</strong></p>
+                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
+                    
+                    <p><strong>【Adjustable Brightness】</strong></p>
+                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
+                    
+                    <p><strong>【Portable Mini Design】</strong></p>
+                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
+                    
+                    <p><strong>【Warm White 3000K】</strong></p>
+                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
+                    
+                    <p><strong>【Plug & Play】</strong></p>
+                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
+                    
+                    <p><strong>【Important Note】</strong></p>
+                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
+                `,
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light.",
+                features: [
+                    "Dusk to Dawn Sensor: Auto lights up at dusk/night/low light, turns off during day/sufficient light",
+                    "Adjustable Brightness: Smooth dimming technology allows 5% to full brightness by touching the sliding switch",
+                    "Portable Mini Design: Only uses 1W, made of ABS flame retardant materials, durable and safe",
+                    "Warm White 3000K: Soft and non-glare light that protects eyes and won't strain eyes",
+                    "Plug & Play: Ideal for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space",
+                    "Light-Activated: NOT motion-activated. Use at least 1 meter apart to avoid interference"
+                ],
+                fullDescription: `
+                    <p><strong>PURSNIC Store - Amazon's Choice</strong></p>
+                    <p>4.3 out of 5 stars (2,954 ratings). 3K+ bought in past month.</p>
+                    
+                    <p><strong>Dusk to Dawn Sensor</strong></p>
+                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
+                    
+                    <p><strong>Adjustable Brightness</strong></p>
+                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
+                    
+                    <p><strong>Portable Mini Design</strong></p>
+                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
+                    
+                    <p><strong>Plug & Play</strong></p>
+                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
+                    
+                    <p><strong>Warm White 3000K</strong></p>
+                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
+                    
+                    <p><strong>Important Note</strong></p>
+                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
+                    
+                    <p><strong>Product Specifications</strong></p>
+                    <ul>
+                        <li>Finish type: Matte</li>
+                        <li>Base material: Plastic</li>
+                        <li>Product dimensions: 5D x 5W x 5H centimetres</li>
+                        <li>Item weight: 0.08 Kilograms</li>
+                        <li>Lamp type: LED</li>
+                        <li>Color options: Warm White, Cool White, Natural White, RGB</li>
+                    </ul>
+                `
+            },
+            {
+                id: 8,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack",
+                price: 16.99,
+                image: "./img/8-1-1.jpg",
+                images: ["./img/8-1-1.jpg", "./img/8-1-2.jpg", "./img/8-1-3.jpg", "./img/8-1-4.jpg", "./img/8-1-5.jpg", "./img/8-1-6.jpg", "./img/8-1-7.jpg", "./img/8-1-8.jpg", "./img/8-1-9.jpg", "./img/8-1-10.jpg"],
+                colorVariants: [
+                    {
+                        name: "Color 1",
+                        mainImage: "./img/8-1-1.jpg",
+                        images: ["./img/8-1-1.jpg", "./img/8-1-2.jpg", "./img/8-1-3.jpg", "./img/8-1-4.jpg", "./img/8-1-5.jpg", "./img/8-1-6.jpg", "./img/8-1-7.jpg", "./img/8-1-8.jpg", "./img/8-1-9.jpg", "./img/8-1-10.jpg"]
+                    },
+                    {
+                        name: "Color 2",
+                        mainImage: "./img/8-2-1.jpg",
+                        images: ["./img/8-2-1.jpg", "./img/8-2-2.jpg", "./img/8-2-3.jpg", "./img/8-2-4.jpg", "./img/8-2-5.jpg", "./img/8-2-6.jpg", "./img/8-2-7.jpg", "./img/8-2-8.jpg", "./img/8-2-9.jpg", "./img/8-2-10.jpg"]
+                    },
+                    {
+                        name: "Color 3",
+                        mainImage: "./img/8-3-1.jpg",
+                        images: ["./img/8-3-1.jpg", "./img/8-3-2.jpg", "./img/8-3-3.jpg", "./img/8-3-4.jpg", "./img/8-3-5.jpg", "./img/8-3-6.jpg", "./img/8-3-7.jpg", "./img/8-3-8.jpg", "./img/8-3-9.jpg", "./img/8-3-10.jpg"]
+                    },
+                    {
+                        name: "Color 4",
+                        mainImage: "./img/8-4-1.jpg",
+                        images: ["./img/8-4-1.jpg", "./img/8-4-2.jpg", "./img/8-4-3.jpg", "./img/8-4-4.jpg", "./img/8-4-5.jpg", "./img/8-4-6.jpg", "./img/8-4-7.jpg", "./img/8-4-8.jpg", "./img/8-4-9.jpg", "./img/8-4-10.jpg"]
+                    }
+                ],
+                specifications: [
+                    { label: "Brand", value: "PURSNIC" },
+                    {
+                        label: "ASIN",
+                        value: "B0D9JJ91H6"
+                    },
+                    { label: "Base material", value: "Plastic" },
+                    { label: "Product dimensions", value: "5D x 5W x 5H centimetres" },
+                    { label: "Item weight", value: "0.08 Kilograms" },
+                    { label: "Lamp type", value: "LED" },
+                    { label: "Finish type", value: "Matte" },
+                    { label: "Color options", value: "Warm White, Cool White, Natural White, RGB" }
+                ],
+                aboutItem: `
+                    <p><strong>【Dusk to Dawn Sensor】</strong></p>
+                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
+                    
+                    <p><strong>【Adjustable Brightness】</strong></p>
+                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
+                    
+                    <p><strong>【Portable Mini Design】</strong></p>
+                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
+                    
+                    <p><strong>【Warm White 3000K】</strong></p>
+                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
+                    
+                    <p><strong>【Plug & Play】</strong></p>
+                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
+                    
+                    <p><strong>【Important Note】</strong></p>
+                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
+                `,
                 description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light.",
                 features: [
                     "Dusk to Dawn Sensor: Auto lights up at dusk/night/low light, turns off during day/sufficient light",
@@ -513,70 +955,98 @@
             const productImages = product.images || [product.image];
             const mainImage = productImages[0] || product.image;
 
-            // Create thumbnails from product images
-            const thumbnails = productImages.map((img, index) => 
+            // Create thumbnails - show only first 6, add placeholder if more
+            const maxThumbnails = 6;
+            const visibleImages = productImages.slice(0, maxThumbnails);
+            const hasMore = productImages.length > maxThumbnails;
+            const remainingCount = productImages.length - maxThumbnails;
+
+            const thumbnails = visibleImages.map((img, index) => 
                 `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
             ).join('');
 
-            // Handle price display - support variants
-            let priceDisplay = '';
-            if (product.variants && product.variants.length > 0) {
-                priceDisplay = `
-                    <div class="product-price" id="productPrice">£${product.variants[0].price.toFixed(2)}</div>
-                    <div style="margin-top: 10px;">
-                        <label for="variantSelect" style="font-size: 16px; color: var(--text-secondary); margin-right: 10px;">Select Pack:</label>
-                        <select id="variantSelect" onchange="updatePrice()" style="padding: 8px 15px; font-size: 16px; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer;">
-                            ${product.variants.map((v, index) => 
-                                `<option value="${index}" ${index === 0 ? 'selected' : ''}>${v.pack} - £${v.price.toFixed(2)}</option>`
-                            ).join('')}
-                        </select>
+            // Add placeholder thumbnail if there are more images
+            let placeholderThumbnail = '';
+            if (hasMore) {
+                placeholderThumbnail = `<div class="thumbnail thumbnail-more" onclick="openImageModal(${productId})" title="View all ${productImages.length} images">+${remainingCount}</div>`;
+            }
+
+            // Handle price display
+            const priceDisplay = `<div class="product-price">£${product.price.toFixed(2)}</div>`;
+
+            // Create color variants selector if product has color variants
+            let colorVariantsHTML = '';
+            if (product.colorVariants && product.colorVariants.length > 0) {
+                const colorOptions = product.colorVariants.map((variant, index) => 
+                    `<button class="color-option ${index === 0 ? 'active' : ''}" onclick="changeColorVariant(${productId}, ${index})">
+                        <img src="${variant.mainImage}" alt="${variant.name}" class="color-option-thumbnail">
+                      
+                    </button>`
+                ).join('');
+                colorVariantsHTML = `
+                    <div class="color-variants">
+                        <div class="color-variants-title">Select Color:</div>
+                        <div class="color-options">
+                            ${colorOptions}
+                        </div>
                     </div>
                 `;
-            } else {
-                priceDisplay = `<div class="product-price">£${product.price.toFixed(2)}</div>`;
+            }
+
+            // Create specifications HTML if product has specifications
+            let specificationsHTML = '';
+            if (product.specifications && product.specifications.length > 0) {
+                const specsList = product.specifications.map(spec => 
+                    `<li>
+                        <span class="spec-label">${spec.label}:</span>
+                        <span class="spec-value">${spec.value}</span>
+                    </li>`
+                ).join('');
+                specificationsHTML = `
+                    <div class="product-specifications">
+                        <h3 class="specifications-title">Product Specifications</h3>
+                        <ul class="specifications-list">
+                            ${specsList}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            // Create About This Item HTML if product has aboutItem
+            let aboutItemHTML = '';
+            if (product.aboutItem) {
+                aboutItemHTML = `
+                    <div class="about-item">
+                        <h3 class="about-item-title">About this item</h3>
+                        <div class="about-item-content">
+                            ${product.aboutItem}
+                        </div>
+                    </div>
+                `;
             }
 
             container.innerHTML = `
                 <div class="product-images">
                     <img src="${mainImage}" alt="${product.title}" class="main-image" id="mainImage">
-                    <div class="thumbnail-grid">
-                        ${thumbnails}
+                    <div class="thumbnail-grid" id="thumbnailGrid">
+                        ${thumbnails}${placeholderThumbnail}
                     </div>
                 </div>
                 <div class="product-info">
                     <h1 class="product-title">${product.title}</h1>
                     ${priceDisplay}
-                    <div class="product-description">${product.description}</div>
-                    <ul class="features-list">
-                        ${product.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
+                    ${colorVariantsHTML}
+                    ${specificationsHTML}
                     <button class="buy-button" onclick="handleBuy(${product.id})">
-                        Available at
-                        <svg class="amazon-logo" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 15 L30 5 L40 15 L30 25 Z" fill="currentColor"/>
-                            <text x="45" y="20" font-size="14" font-weight="bold">amazon</text>
-                        </svg>
+                        Buy Now
+                  
                     </button>
+                    ${aboutItemHTML}
+                   
                 </div>
             `;
 
-            descriptionContent.innerHTML = product.fullDescription;
-            
-            // Store product data globally for price update function
-            window.currentProduct = product;
-        }
-
-        // Update price when variant changes
-        function updatePrice() {
-            if (window.currentProduct && window.currentProduct.variants) {
-                const select = document.getElementById('variantSelect');
-                const selectedIndex = parseInt(select.value);
-                const selectedVariant = window.currentProduct.variants[selectedIndex];
-                const priceElement = document.getElementById('productPrice');
-                if (priceElement && selectedVariant) {
-                    priceElement.textContent = `£${selectedVariant.price.toFixed(2)}`;
-                }
-            }
+            // descriptionContent.innerHTML = product.fullDescription;
         }
 
         // Change main image
@@ -586,17 +1056,196 @@
             thumbnail.classList.add('active');
         }
 
+        // Change color variant
+        function changeColorVariant(productId, variantIndex) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.colorVariants || !product.colorVariants[variantIndex]) {
+                return;
+            }
+
+            const variant = product.colorVariants[variantIndex];
+            const mainImage = document.getElementById('mainImage');
+            const thumbnailGrid = document.getElementById('thumbnailGrid');
+
+            // Update main image
+            mainImage.src = variant.mainImage;
+
+            // Update thumbnails - show only first 6, add placeholder if more
+            const maxThumbnails = 6;
+            const visibleImages = variant.images.slice(0, maxThumbnails);
+            const hasMore = variant.images.length > maxThumbnails;
+            const remainingCount = variant.images.length - maxThumbnails;
+
+            const thumbnails = visibleImages.map((img, index) => 
+                `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
+            ).join('');
+
+            // Add placeholder thumbnail if there are more images
+            let placeholderThumbnail = '';
+            if (hasMore) {
+                placeholderThumbnail = `<div class="thumbnail thumbnail-more" onclick="openImageModal(${productId}, ${variantIndex})" title="View all ${variant.images.length} images">+${remainingCount}</div>`;
+            }
+
+            thumbnailGrid.innerHTML = thumbnails + placeholderThumbnail;
+
+            // Update active color option
+            document.querySelectorAll('.color-option').forEach((option, index) => {
+                if (index === variantIndex) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+
+        // Store current modal images and index
+        let currentModalImages = [];
+        let currentModalIndex = 0;
+
+        // Open image modal
+        function openImageModal(productId, variantIndex = null) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            let imagesToShow = [];
+            
+            // If variantIndex is not provided, try to detect current active variant
+            if (variantIndex === null && product.colorVariants && product.colorVariants.length > 0) {
+                const activeColorOption = document.querySelector('.color-option.active');
+                if (activeColorOption) {
+                    const colorOptions = Array.from(document.querySelectorAll('.color-option'));
+                    variantIndex = colorOptions.indexOf(activeColorOption);
+                }
+            }
+
+            if (variantIndex !== null && product.colorVariants && product.colorVariants[variantIndex]) {
+                imagesToShow = product.colorVariants[variantIndex].images;
+            } else {
+                imagesToShow = product.images || [product.image];
+            }
+
+            // Store images and start from first image
+            currentModalImages = imagesToShow;
+            currentModalIndex = 0;
+
+            const modal = document.getElementById('imageModal');
+            const modalContent = document.getElementById('modalGallery');
+            
+            // Display first image with navigation
+            updateModalImage();
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Update modal image display
+        function updateModalImage() {
+            const modalContent = document.getElementById('modalGallery');
+            const currentImage = currentModalImages[currentModalIndex];
+            
+            if (!currentImage) return;
+
+            const prevDisabled = currentModalIndex === 0 ? 'disabled' : '';
+            const nextDisabled = currentModalIndex === currentModalImages.length - 1 ? 'disabled' : '';
+            const counter = `${currentModalIndex + 1} / ${currentModalImages.length}`;
+
+            modalContent.innerHTML = `
+                <div class="modal-image-container">
+                    <button class="modal-nav prev" ${prevDisabled} onclick="navigateModalImage(-1)" title="Previous image">◀</button>
+                    <img src="${currentImage}" alt="Image ${currentModalIndex + 1}" class="modal-image" onclick="changeMainImageFromModal('${currentImage}')">
+                    <button class="modal-nav next" ${nextDisabled} onclick="navigateModalImage(1)" title="Next image">▶</button>
+                    <div class="modal-counter">${counter}</div>
+                </div>
+            `;
+        }
+
+        // Navigate modal images
+        function navigateModalImage(direction) {
+            currentModalIndex += direction;
+            
+            // Clamp index to valid range
+            if (currentModalIndex < 0) {
+                currentModalIndex = 0;
+            } else if (currentModalIndex >= currentModalImages.length) {
+                currentModalIndex = currentModalImages.length - 1;
+            }
+            
+            updateModalImage();
+        }
+
+        // Close image modal
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Change main image from modal
+        function changeMainImageFromModal(imgSrc) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = imgSrc;
+            
+            // Update active thumbnail
+            const imgFileName = imgSrc.split('/').pop();
+            document.querySelectorAll('.thumbnail').forEach(t => {
+                if (t.tagName === 'IMG' && t.src) {
+                    const thumbFileName = t.src.split('/').pop();
+                    if (thumbFileName === imgFileName) {
+                        t.classList.add('active');
+                    } else {
+                        t.classList.remove('active');
+                    }
+                }
+            });
+            
+            closeImageModal();
+        }
+
         // Handle buy button
         function handleBuy(id) {
             if (id === 7) {
                 window.open('https://www.amazon.co.uk/dp/B0CZMTN8X3?th=1', '_blank');
-            } else  {
+            } else if (id === 8) {
+                window.open('https://www.amazon.co.uk/dp/B0D9JJ91H6?th=1', '_blank');
+            } else {
                 window.open('https://www.amazon.com/', '_blank');
             } 
         }
 
         // Initialize
         loadProduct();
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeImageModal();
+            }
+        });
+
+        // Close modal with Escape key and navigate with arrow keys
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (!modal.classList.contains('active')) return;
+
+            if (event.key === 'Escape') {
+                closeImageModal();
+            } else if (event.key === 'ArrowLeft') {
+                navigateModalImage(-1);
+            } else if (event.key === 'ArrowRight') {
+                navigateModalImage(1);
+            }
+        });
     </script>
+
+    <!-- Image Gallery Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-close" onclick="closeImageModal()">&times;</div>
+        <div class="modal-content">
+            <div class="modal-gallery" id="modalGallery">
+                <!-- Images will be loaded here -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
