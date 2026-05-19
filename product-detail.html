@@ -850,6 +850,98 @@
     </section>
 
     <script>
+        const NIGHT_LIGHT_ABOUT_2PACK = `
+                    <p><strong>【Dusk to Dawn Sensor】</strong></p>
+                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
+                    <p><strong>【Adjustable Brightness】</strong></p>
+                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
+                    <p><strong>【Portable Mini Design】</strong></p>
+                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
+                    <p><strong>【Warm White 3000K】</strong></p>
+                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
+                    <p><strong>【Plug & Play】</strong></p>
+                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
+                    <p><strong>【Important Note】</strong></p>
+                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
+                `;
+        const NIGHT_LIGHT_FEATURES = [
+            "Dusk to Dawn Sensor: Auto lights up at dusk/night/low light, turns off during day/sufficient light",
+            "Adjustable Brightness: Smooth dimming technology allows 5% to full brightness by touching the sliding switch",
+            "Portable Mini Design: Only uses 1W, made of ABS flame retardant materials, durable and safe",
+            "Warm White 3000K: Soft and non-glare light that protects eyes and won't strain eyes",
+            "Plug & Play: Ideal for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space",
+            "Light-Activated: NOT motion-activated. Use at least 1 meter apart to avoid interference"
+        ];
+        const SPLIT_NIGHT_LIGHT_CONFIGS = [
+            { id: 11, seriesId: 7, color: 1, colorType: "3000K", pack: 2, asin: "B0D5HQDL44", imageCount: 10, price: 14.99, model: "KMNL00102UK" },
+            { id: 12, seriesId: 7, color: 2, colorType: "4000K", pack: 2, asin: "B0CWLDWYKW", imageCount: 9, price: 14.99, model: "KMNL00102UK" },
+            { id: 13, seriesId: 7, color: 3, colorType: "RGB", pack: 2, asin: "B0D9JG2V4M", imageCount: 9, price: 14.99, model: "KMNL00102UK" },
+            { id: 14, seriesId: 7, color: 4, colorType: "6000K", pack: 2, asin: "B0CZMTN8X3", imageCount: 8, price: 14.99, model: "KMNL00102UK" },
+            { id: 15, seriesId: 8, color: 1, colorType: "3000K", pack: 4, asin: "B0D9JJBLRY", imageCount: 10, price: 18.99, model: "KMNL00104UK" },
+            { id: 16, seriesId: 8, color: 2, colorType: "4000K", pack: 4, asin: "B0D9JHV48X", imageCount: 10, price: 18.99, model: "KMNL00104UK" },
+            { id: 17, seriesId: 8, color: 3, colorType: "RGB", pack: 4, asin: "B0DJP7V5CP", imageCount: 10, price: 18.99, model: "KMNL00104UK" },
+            { id: 18, seriesId: 8, color: 4, colorType: "6000K", pack: 4, asin: "B0D9JJ91H6", imageCount: 10, price: 18.99, model: "KMNL00104UK" }
+        ];
+
+        function createSplitNightLightProduct(config) {
+            const images = Array.from({ length: config.imageCount }, (_, i) =>
+                `./img/${config.seriesId}-${config.color}-${i + 1}.jpg`
+            );
+            const packLabel = config.pack === 2 ? "2 Pack" : "4 Pack";
+            const is2Pack = config.pack === 2;
+            return {
+                id: config.id,
+                title: `Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - ${packLabel} - ${config.colorType}`,
+                price: config.price,
+                image: images[0],
+                images,
+                asin: config.asin,
+                specifications: is2Pack ? [
+                    { label: "Brand", value: "PURSNIC" },
+                    { label: "ASIN", value: config.asin },
+                    { label: "Base material", value: "Plastic" },
+                    { label: "Product dimensions", value: "5D x 5W x 5H centimetres" },
+                    { label: "Item weight", value: "0.08 Kilograms" },
+                    { label: "Lamp type", value: "LED" },
+                    { label: "Finish type", value: "Matte" },
+                    { label: "Colour temperature", value: config.colorType }
+                ] : [
+                    { label: "Brand", value: "PURSNIC" },
+                    { label: "ASIN", value: config.asin },
+                    { label: "Finish type", value: "Unfinished" },
+                    { label: "Bulb base", value: "Prong" },
+                    { label: "Product dimensions", value: "5.5D x 5.5W x 2.8H centimetres" },
+                    { label: "Lamp type", value: "Night Light" },
+                    { label: "Colour temperature", value: config.colorType }
+                ],
+                productInformation: [
+                    { label: "Product Dimensions", value: "3 x 5 x 5 cm; 80 g" },
+                    { label: "Specific uses", value: "Balcony, Cabinet, Garage, Home, Patio" },
+                    { label: "Finish types", value: "Matte" },
+                    { label: "Specification met", value: "CE, FCC, RoHS, UKCA" },
+                    { label: "Is assembly required", value: "No" },
+                    { label: "Number of pieces", value: String(config.pack) },
+                    { label: "Batteries required", value: "No" },
+                    { label: "Included components", value: `${config.pack} Pack Plug in Night Lights` },
+                    { label: "Item weight", value: "0.08 Kilograms" }
+                ],
+                additionalInformation: [
+                    { label: "ASIN", value: config.asin },
+                    { label: "Item model number", value: config.model },
+                    { label: "Date First Available", value: "30 April 2024" },
+                    { label: "Customer Reviews", value: "4.4 out of 5 stars", rating: 4.4, totalRatings: 3008 },
+                    { label: "Best Sellers Rank", value: "#28 in Lighting", link: "#" }
+                ],
+                aboutItem: NIGHT_LIGHT_ABOUT_2PACK,
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light.",
+                features: NIGHT_LIGHT_FEATURES,
+                fullDescription: ""
+            };
+        }
+
+        const splitNightLightProducts = SPLIT_NIGHT_LIGHT_CONFIGS.map(createSplitNightLightProduct);
+        const isSplitNightLightProduct = (id) => id >= 11 && id <= 18;
+
         // Product data (same as index.html)
         const products = [
             {
@@ -1000,244 +1092,7 @@
                     <p>This LED lamp kit is specifically designed for Bambu Lab 3D printers. Enhances visibility during printing with warm white or RGB color options.</p>
                 `
             },
-            {
-                id: 7,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack",
-                price: 12.99,
-                image: "./img/7-1-1.jpg",
-                images: ["./img/7-1-1.jpg", "./img/7-1-2.jpg", "./img/7-1-3.jpg", "./img/7-1-4.jpg", "./img/7-1-5.jpg", "./img/7-1-6.jpg", "./img/7-1-7.jpg", "./img/7-1-8.jpg", "./img/7-1-9.jpg", "./img/7-1-10.jpg"],
-                colorVariants: [
-                    {
-                        name: "Color 1",
-                        mainImage: "./img/7-1-1.jpg",
-                        images: ["./img/7-1-1.jpg", "./img/7-1-2.jpg", "./img/7-1-3.jpg", "./img/7-1-4.jpg", "./img/7-1-5.jpg", "./img/7-1-6.jpg", "./img/7-1-7.jpg", "./img/7-1-8.jpg", "./img/7-1-9.jpg", "./img/7-1-10.jpg"]
-                    },
-                    {
-                        name: "Color 2",
-                        mainImage: "./img/7-2-1.jpg",
-                        images: ["./img/7-2-1.jpg", "./img/7-2-2.jpg", "./img/7-2-3.jpg", "./img/7-2-4.jpg", "./img/7-2-5.jpg", "./img/7-2-6.jpg", "./img/7-2-7.jpg", "./img/7-2-8.jpg", "./img/7-2-9.jpg"]
-                    },
-                    {
-                        name: "Color 3",
-                        mainImage: "./img/7-3-1.jpg",
-                        images: ["./img/7-3-1.jpg", "./img/7-3-2.jpg", "./img/7-3-3.jpg", "./img/7-3-4.jpg", "./img/7-3-5.jpg", "./img/7-3-6.jpg", "./img/7-3-7.jpg", "./img/7-3-8.jpg", "./img/7-3-9.jpg"]
-                    },
-                    {
-                        name: "Color 4",
-                        mainImage: "./img/7-4-1.jpg",
-                        images: ["./img/7-4-1.jpg", "./img/7-4-2.jpg", "./img/7-4-3.jpg", "./img/7-4-4.jpg", "./img/7-4-5.jpg", "./img/7-4-6.jpg", "./img/7-4-7.jpg", "./img/7-4-8.jpg"]
-                    }
-                ],
-                specifications: [
-                    { label: "Brand", value: "PURSNIC" },
-                    {
-                        label: "ASIN",
-                        value: "B0D9JG2V4M"
-                    },
-                    { label: "Base material", value: "Plastic" },
-                    { label: "Product dimensions", value: "5D x 5W x 5H centimetres" },
-                    { label: "Item weight", value: "0.08 Kilograms" },
-                    { label: "Lamp type", value: "LED" },
-                    { label: "Finish type", value: "Matte" },
-                    { label: "Color options", value: "Warm White, Cool White, Natural White, RGB" }
-                ],
-                productInformation: [
-                    { label: "Product Dimensions", value: "3 x 5 x 5 cm; 80 g" },
-                    { label: "Specific uses", value: "Balcony, Cabinet, Garage, Home, Patio" },
-                    { label: "Finish types", value: "Matte" },
-                    { label: "Specification met", value: "CE, FCC, RoHS, UKCA" },
-                    { label: "Is assembly required", value: "No" },
-                    { label: "Number of pieces", value: "2" },
-                    { label: "Batteries required", value: "No" },
-                    { label: "Included components", value: "2 Pack Plug in Night Lights" },
-                    { label: "Item weight", value: "0.08 Kilograms" }
-                ],
-                additionalInformation: [
-                    { label: "ASIN", value: "B0D9JG2V4M" },
-                    { label: "Item model number", value: "KMNL00102UK" },
-                    { label: "Date First Available", value: "30 April 2024" },
-                    { label: "Customer Reviews", value: "4.4 out of 5 stars", rating: 4.4, totalRatings: 3008 },
-                    { label: "Best Sellers Rank", value: "#28 in Lighting", link: "#" }
-                ],
-                aboutItem: `
-                    <p><strong>【Dusk to Dawn Sensor】</strong></p>
-                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
-                    
-                    <p><strong>【Adjustable Brightness】</strong></p>
-                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
-                    
-                    <p><strong>【Portable Mini Design】</strong></p>
-                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
-                    
-                    <p><strong>【Warm White 3000K】</strong></p>
-                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
-                    
-                    <p><strong>【Plug & Play】</strong></p>
-                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
-                    
-                    <p><strong>【Important Note】</strong></p>
-                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
-                `,
-                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light.",
-                features: [
-                    "Dusk to Dawn Sensor: Auto lights up at dusk/night/low light, turns off during day/sufficient light",
-                    "Adjustable Brightness: Smooth dimming technology allows 5% to full brightness by touching the sliding switch",
-                    "Portable Mini Design: Only uses 1W, made of ABS flame retardant materials, durable and safe",
-                    "Warm White 3000K: Soft and non-glare light that protects eyes and won't strain eyes",
-                    "Plug & Play: Ideal for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space",
-                    "Light-Activated: NOT motion-activated. Use at least 1 meter apart to avoid interference"
-                ],
-                fullDescription: `
-                    <p><strong>PURSNIC Store - Amazon's Choice</strong></p>
-                    <p>4.3 out of 5 stars (2,954 ratings). 3K+ bought in past month.</p>
-                    
-                    <p><strong>Dusk to Dawn Sensor</strong></p>
-                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
-                    
-                    <p><strong>Adjustable Brightness</strong></p>
-                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
-                    
-                    <p><strong>Portable Mini Design</strong></p>
-                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
-                    
-                    <p><strong>Plug & Play</strong></p>
-                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
-                    
-                    <p><strong>Warm White 3000K</strong></p>
-                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
-                    
-                    <p><strong>Important Note</strong></p>
-                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
-                    
-                    <p><strong>Product Specifications</strong></p>
-                    <ul>
-                        <li>Finish type: Matte</li>
-                        <li>Base material: Plastic</li>
-                        <li>Product dimensions: 5D x 5W x 5H centimetres</li>
-                        <li>Item weight: 0.08 Kilograms</li>
-                        <li>Lamp type: LED</li>
-                        <li>Color options: Warm White, Cool White, Natural White, RGB</li>
-                    </ul>
-                `
-            },
-            {
-                id: 8,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack",
-                price: 16.99,
-                image: "./img/8-1-1.jpg",
-                images: ["./img/8-1-1.jpg", "./img/8-1-2.jpg", "./img/8-1-3.jpg", "./img/8-1-4.jpg", "./img/8-1-5.jpg", "./img/8-1-6.jpg", "./img/8-1-7.jpg", "./img/8-1-8.jpg", "./img/8-1-9.jpg", "./img/8-1-10.jpg"],
-                colorVariants: [
-                    {
-                        name: "Color 1",
-                        mainImage: "./img/8-1-1.jpg",
-                        images: ["./img/8-1-1.jpg", "./img/8-1-2.jpg", "./img/8-1-3.jpg", "./img/8-1-4.jpg", "./img/8-1-5.jpg", "./img/8-1-6.jpg", "./img/8-1-7.jpg", "./img/8-1-8.jpg", "./img/8-1-9.jpg", "./img/8-1-10.jpg"]
-                    },
-                    {
-                        name: "Color 2",
-                        mainImage: "./img/8-2-1.jpg",
-                        images: ["./img/8-2-1.jpg", "./img/8-2-2.jpg", "./img/8-2-3.jpg", "./img/8-2-4.jpg", "./img/8-2-5.jpg", "./img/8-2-6.jpg", "./img/8-2-7.jpg", "./img/8-2-8.jpg", "./img/8-2-9.jpg", "./img/8-2-10.jpg"]
-                    },
-                    {
-                        name: "Color 3",
-                        mainImage: "./img/8-3-1.jpg",
-                        images: ["./img/8-3-1.jpg", "./img/8-3-2.jpg", "./img/8-3-3.jpg", "./img/8-3-4.jpg", "./img/8-3-5.jpg", "./img/8-3-6.jpg", "./img/8-3-7.jpg", "./img/8-3-8.jpg", "./img/8-3-9.jpg", "./img/8-3-10.jpg"]
-                    },
-                    {
-                        name: "Color 4",
-                        mainImage: "./img/8-4-1.jpg",
-                        images: ["./img/8-4-1.jpg", "./img/8-4-2.jpg", "./img/8-4-3.jpg", "./img/8-4-4.jpg", "./img/8-4-5.jpg", "./img/8-4-6.jpg", "./img/8-4-7.jpg", "./img/8-4-8.jpg", "./img/8-4-9.jpg", "./img/8-4-10.jpg"]
-                    }
-                ],
-                specifications: [
-                    { label: "Brand", value: "PURSNIC" },
-                    {
-                        label: "ASIN",
-                        value: "B0DJP7V5CP"
-                    },
-                    { label: "Finish type", value: "Unfinished" },
-                    { label: "Bulb base", value: "Prong" },
-                    { label: "Product dimensions", value: "5.5D x 5.5W x 2.8H centimetres" },
-                    { label: "Lamp type", value: "Night Light" },
-                ],
-                productInformation: [
-                    { label: "Product Dimensions", value: "	3 x 5 x 5 cm; 80 g" },
-                    { label: "Specific uses", value: "Balcony, Cabinet, Garage, Home, Patio" },
-                    { label: "Finish types", value: "Matte" },
-                    { label: "Specification met", value: "CE, FCC, RoHS, UKCA" },
-                    { label: "Is assembly required", value: "No" },
-                    { label: "Number of pieces", value: "4" },
-                    { label: "Batteries required", value: "No" },
-                    { label: "Included components", value: "4 Pack Plug in Night Lights" },
-                    { label: "Item weight", value: "0.08 Kilograms" }
-                ],
-                additionalInformation: [
-                    { label: "ASIN", value: "B0DJP7V5CP" },
-                    { label: "Item model number", value: "KMNL00104UK" },
-                    { label: "Date First Available", value: "30 April 2024" },
-                    { label: "Customer Reviews", value: "4.4 out of 5 stars", rating: 4.4, totalRatings: 3008 },
-                    { label: "Best Sellers Rank", value: "#28 in Lighting", link: "#" }
-                ],
-                aboutItem: `
-                    <p><strong>【Dusk to Dawn Sensor】</strong></p>
-                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
-                    
-                    <p><strong>【Adjustable Brightness】</strong></p>
-                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
-                    
-                    <p><strong>【Portable Mini Design】</strong></p>
-                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
-                    
-                    <p><strong>【Warm White 3000K】</strong></p>
-                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
-                    
-                    <p><strong>【Plug & Play】</strong></p>
-                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
-                    
-                    <p><strong>【Important Note】</strong></p>
-                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
-                `,
-                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light.",
-                features: [
-                    "Dusk to Dawn Sensor: Auto lights up at dusk/night/low light, turns off during day/sufficient light",
-                    "Adjustable Brightness: Smooth dimming technology allows 5% to full brightness by touching the sliding switch",
-                    "Portable Mini Design: Only uses 1W, made of ABS flame retardant materials, durable and safe",
-                    "Warm White 3000K: Soft and non-glare light that protects eyes and won't strain eyes",
-                    "Plug & Play: Ideal for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space",
-                    "Light-Activated: NOT motion-activated. Use at least 1 meter apart to avoid interference"
-                ],
-                fullDescription: `
-                    <p><strong>PURSNIC Store - Amazon's Choice</strong></p>
-                    <p>4.3 out of 5 stars (2,954 ratings). 3K+ bought in past month.</p>
-                    
-                    <p><strong>Dusk to Dawn Sensor</strong></p>
-                    <p>Night light with sensitive light control sensing. The dusk to dawn night light will auto light up at dusk, night or in low light conditions, and it will turn off automatically during day or in sufficient light conditions.</p>
-                    
-                    <p><strong>Adjustable Brightness</strong></p>
-                    <p>Night light plug in wall features a smooth dimming technology that allows 5% to full brightness by touching the sliding switch button, ensuring convenient and precise control according to personal preferences.</p>
-                    
-                    <p><strong>Portable Mini Design</strong></p>
-                    <p>This LED nightlight only uses 1W, and it is made of ABS flame retardant materials, which is durable and safe. More light-emitting surfaces provide more light, won't take up much space, and doesn't take up its next outlets either.</p>
-                    
-                    <p><strong>Plug & Play</strong></p>
-                    <p>The LED night light provides an ideal means of illuminating indoor locations such as children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. It is an excellent choice for alleviating the fear of the dark.</p>
-                    
-                    <p><strong>Warm White 3000K</strong></p>
-                    <p>Plug in night light gives off warm white light, soft and non-glare, which can protect eyes and won't strain eyes. The comfortable light can light up the way and provide safety in the dark, also help you fall asleep.</p>
-                    
-                    <p><strong>Important Note</strong></p>
-                    <p>Please note the nightlights are light-activated, NOT motion-activated. If you want to use two dusk to dawn night lights at the same time, please use them at least 1 meter apart to avoid interfering with each other, otherwise flickering problems may occur.</p>
-                    
-                    <p><strong>Product Specifications</strong></p>
-                    <ul>
-                        <li>Finish type: Matte</li>
-                        <li>Base material: Plastic</li>
-                        <li>Product dimensions: 5D x 5W x 5H centimetres</li>
-                        <li>Item weight: 0.08 Kilograms</li>
-                        <li>Lamp type: LED</li>
-                        <li>Color options: Warm White, Cool White, Natural White, RGB</li>
-                    </ul>
-                `
-            },
+            ...splitNightLightProducts,
             {
                 id: 9,
                 title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor - 6 Pack",
@@ -1388,7 +1243,7 @@
                 const specsList = product.specifications.map(spec =>
                     `<li>
                         <span class="spec-label">${spec.label}:</span>
-                        <span class="spec-value">${spec.value}</span>
+                        <span class="spec-value${spec.label === 'ASIN' ? ' product-asin-value' : ''}">${spec.value}</span>
                     </li>`
                 ).join('');
                 specificationsHTML = `
@@ -1450,7 +1305,9 @@
                 // Generate Additional Information table
                 const additionalInfoRows = product.additionalInformation.map(item => {
                     let valueHtml = item.value;
-                    if (item.rating) {
+                    if (item.label === 'ASIN') {
+                        valueHtml = `<span class="product-asin-value">${item.value}</span>`;
+                    } else if (item.rating) {
                         const fullStars = Math.floor(item.rating);
                         const hasHalfStar = item.rating % 1 >= 0.5;
                         let starsHtml = '';
@@ -1492,8 +1349,7 @@
 
             // Generate From the Brand section with carousel
             const fromBrandSection = document.getElementById('fromBrandSection');
-            if (productId === 7 || productId === 8) {
-                // Use same images for both product 7 and 8 (use product 7's images)
+            if (isSplitNightLightProduct(productId)) {
                 const baseProductId = 7;
                 // Background image
                 const bgImagePath = `./img/${baseProductId}-brand-bg.jpg`;
@@ -1587,8 +1443,7 @@
 
             // Generate Product Description section with image grid
             const productDescriptionSection = document.getElementById('productDescriptionSection');
-            if (productId === 7 || productId === 8) {
-                // Use same images for both product 7 and 8 (use product 7's images)
+            if (isSplitNightLightProduct(productId)) {
                 const baseProductId = 7;
                 // Generate description images (try .jfif first, fallback to .jpg, hide if both fail)
                 const imageItems = [];
@@ -1801,6 +1656,32 @@
                     option.classList.remove('active');
                 }
             });
+
+            if (variant.asin) {
+                updateProductAsinDisplay(variant.asin);
+            }
+        }
+
+        function updateProductAsinDisplay(asin) {
+            document.querySelectorAll('.product-asin-value').forEach(el => {
+                el.textContent = asin;
+            });
+        }
+
+        function getActiveColorVariantIndex() {
+            const activeColorOption = document.querySelector('.color-option.active');
+            if (!activeColorOption) return 0;
+            const colorOptions = Array.from(document.querySelectorAll('.color-option'));
+            const index = colorOptions.indexOf(activeColorOption);
+            return index >= 0 ? index : 0;
+        }
+
+        function getActiveVariantAsin(product) {
+            if (!product.colorVariants || product.colorVariants.length === 0) {
+                return null;
+            }
+            const variantIndex = getActiveColorVariantIndex();
+            return product.colorVariants[variantIndex]?.asin || null;
         }
 
         // Store current modal images and index
@@ -1923,11 +1804,17 @@
 
         // Handle buy button
         function handleBuy(id) {
-            if (id === 7) {
-                window.open('https://www.amazon.co.uk/dp/B0D9JG2V4M?th=1', '_blank');
-            } else if (id === 8) {
-                window.open('https://www.amazon.co.uk/dp/B0DJP7V5CP?th=1', '_blank');
-            } else if (id === 9) {
+            const product = products.find(p => p.id === id);
+            const variantAsin = product ? getActiveVariantAsin(product) : null;
+            if (variantAsin) {
+                window.open(`https://www.amazon.co.uk/dp/${variantAsin}?th=1`, '_blank');
+                return;
+            }
+            if (product?.asin) {
+                window.open(`https://www.amazon.co.uk/dp/${product.asin}?th=1`, '_blank');
+                return;
+            }
+            if (id === 9) {
                 window.open('https://www.amazon.co.uk/dp/B0D9JG2V4M?th=1', '_blank');
             } else if (id === 10) {
                 window.open('https://www.amazon.co.uk/dp/B0DJP7V5CP?th=1', '_blank');

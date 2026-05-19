@@ -265,12 +265,29 @@
 
         .product-meta {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 8px;
             margin-top: 10px;
             padding-top: 10px;
             border-top: 1px solid var(--border-color);
             font-size: 14px;
             color: var(--text-secondary);
+        }
+
+        .product-meta-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product-color-asins {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .product-color-asin {
+            font-size: 13px;
         }
 
         .product-meta-item {
@@ -443,52 +460,101 @@
                 description: "LED light lamp kit compatible with Bambu Lab A1/A1mini/P1S/P1P/X1C. Easy installation with warm white light and RGB color options."
             },
             {
-                id: 7,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack",
-                price: 12.99,
-                image: "./img/7-1-1.jpg",
-                images: ["./img/7-1-1.jpg", "./img/7-1-2.jpg", "./img/7-1-3.jpg", "./img/7-1-4.jpg", "./img/7-1-5.jpg"],
-                brand: "PURSNIC",
-                asin: "B0D9JG2V4M",
-                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light. Adjustable brightness (5% to full) via smooth dimming technology. Portable mini design using only 1W, made of ABS flame retardant materials. Warm white 3000K light, soft and non-glare, protects eyes. Perfect for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. Note: Light-activated, NOT motion-activated. Use at least 1 meter apart to avoid interference."
-            },
-            {
-                id: 8,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, 3000K Warm White, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack",
-                price: 16.99,
-                image: "./img/8-1-1.jpg",
-                images: ["./img/8-1-1.jpg", "./img/8-1-2.jpg", "./img/8-1-3.jpg", "./img/8-1-4.jpg", "./img/8-1-5.jpg"],
-                brand: "PURSNIC",
-                asin: "B0DJP7V5CP",
-                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light. Adjustable brightness (5% to full) via smooth dimming technology. Portable mini design using only 1W, made of ABS flame retardant materials. Warm white 3000K light, soft and non-glare, protects eyes. Perfect for children's rooms, bedrooms, kitchens, living rooms, hallways, stairs, or any dark space. Note: Light-activated, NOT motion-activated. Use at least 1 meter apart to avoid interference."
-            },
-            {
-                id: 9,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor - 6 Pack",
+                id: 11,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack - 3000K",
                 price: 14.99,
-                image: "./img/9-1-1.jpg",
-                images: ["./img/9-1-1.jpg", "./img/9-1-2.jpg", "./img/9-1-3.jpg", "./img/9-1-4.jpg", "./img/9-1-5.jpg", "./img/9-1-6.jpg", "./img/9-1-7.jpg", "./img/9-1-8.jpg", "./img/9-1-9.jpg"],
+                image: "./img/7-1-1.jpg",
                 brand: "PURSNIC",
-                asin: "B0D9JG2V4M",
-                description: "Dusk to dawn sensor night light, warm white, brightness adjustable. Multi-pack configuration for bedroom, hallway, stairs, and other dark areas."
+                asin: "B0D5HQDL44",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
             },
             {
-                id: 10,
-                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor - 10 Series",
+                id: 12,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack - 4000K",
+                price: 14.99,
+                image: "./img/7-2-1.jpg",
+                brand: "PURSNIC",
+                asin: "B0CWLDWYKW",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
+            },
+            {
+                id: 13,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack - RGB",
+                price: 14.99,
+                image: "./img/7-3-1.jpg",
+                brand: "PURSNIC",
+                asin: "B0D9JG2V4M",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
+            },
+            {
+                id: 14,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 2 Pack - 6000K",
+                price: 14.99,
+                image: "./img/7-4-1.jpg",
+                brand: "PURSNIC",
+                asin: "B0CZMTN8X3",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
+            },
+            {
+                id: 15,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack - 3000K",
                 price: 18.99,
-                image: "./img/10-1-1.jpg",
-                images: ["./img/10-1-1.jpg", "./img/10-1-2.jpg", "./img/10-1-3.jpg", "./img/10-1-4.jpg", "./img/10-1-5.jpg", "./img/10-1-6.jpg", "./img/10-1-7.jpg", "./img/10-1-8.jpg"],
+                image: "./img/8-1-1.jpg",
+                brand: "PURSNIC",
+                asin: "B0D9JJBLRY",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
+            },
+            {
+                id: 16,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack - 4000K",
+                price: 18.99,
+                image: "./img/8-2-1.jpg",
+                brand: "PURSNIC",
+                asin: "B0D9JHV48X",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
+            },
+            {
+                id: 17,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack - RGB",
+                price: 18.99,
+                image: "./img/8-3-1.jpg",
                 brand: "PURSNIC",
                 asin: "B0DJP7V5CP",
-                description: "Dusk to dawn sensor night light, warm white, brightness adjustable. Multi-pack configuration for bedroom, hallway, stairs, and other dark areas."
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
+            },
+            {
+                id: 18,
+                title: "Night Light Plug in Wall, with Dusk to Dawn Photocell Sensor, Brightness Adjustable, 1W LED Night Light for Kids, Bedroom, Hallway, Stairs - 4 Pack - 6000K",
+                price: 18.99,
+                image: "./img/8-4-1.jpg",
+                brand: "PURSNIC",
+                asin: "B0D9JJ91H6",
+                description: "PURSNIC Store - Amazon's Choice. 4.3 out of 5 stars (2,954 ratings). Dusk to dawn sensor night light with sensitive light control sensing, auto lights up at dusk/night/low light and turns off during day/sufficient light."
             }
         ];
+
+        function renderAsinHtml(product) {
+            if (product.colorVariants && product.colorVariants.length > 0) {
+                const items = product.colorVariants.map(variant =>
+                    `<div class="product-color-asin"><span class="product-meta-label">${variant.name}:</span> ${variant.asin}</div>`
+                ).join('');
+                return `<div class="product-color-asins">${items}</div>`;
+            }
+            if (product.asin) {
+                return `<div class="product-meta-item"><span class="product-meta-label">ASIN:</span> ${product.asin}</div>`;
+            }
+            return '';
+        }
+
+        const HIDDEN_HOME_PRODUCT_IDS = new Set([9, 10]);
 
         // Load products
         function loadProducts() {
             const grid = document.getElementById('productsGrid');
-            grid.innerHTML = products.map(product => {
-                const asinHtml = product.asin ? `<div class="product-meta-item"><span class="product-meta-label">ASIN:</span> ${product.asin}</div>` : '';
+            grid.innerHTML = products
+                .filter(product => !HIDDEN_HOME_PRODUCT_IDS.has(product.id))
+                .map(product => {
+                const asinHtml = renderAsinHtml(product);
                 return `
                 <a href="product-detail.html?id=${product.id}" class="product-card">
                     <img src="${product.image}" alt="${product.title}" class="product-image">
@@ -496,8 +562,10 @@
                         <h3 class="product-title">${product.title}</h3>
                         <div class="product-price">£${product.price.toFixed(2)}</div>
                         <div class="product-meta">
-                            <div class="product-meta-item"><span class="product-meta-label">No:</span> ${product.id}</div>
-                            <div class="product-meta-item"><span class="product-meta-label">Brand:</span> ${product.brand || 'PURSNIC'}</div>
+                            <div class="product-meta-row">
+                                <div class="product-meta-item"><span class="product-meta-label">No:</span> ${product.id}</div>
+                                <div class="product-meta-item"><span class="product-meta-label">Brand:</span> ${product.brand || 'PURSNIC'}</div>
+                            </div>
                             ${asinHtml}
                         </div>
                     </div>
